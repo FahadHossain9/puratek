@@ -9,7 +9,7 @@ npm run check
 npm run serve
 ```
 
-Review: http://127.0.0.1:5173/ — open one name at a time, switch mobile/desktop and download local feedback notes.
+Review: http://127.0.0.1:5173/ — open one name at a time, compare mobile/desktop side by side and download local feedback notes.
 
 ## Outputs
 

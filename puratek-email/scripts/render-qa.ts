@@ -24,23 +24,17 @@ try{
   if(response?.status()!==200||check.overflow||!check.images||!check.footer||!check.layout||check.primaryActions!==(Number(!!e.heroAction)+e.sections.filter((s:any)=>s.cta).length)||check.footerColor!=='rgb(36, 36, 36)'||check.heroBackground!=='rgb(247, 147, 30)'||check.heroInk!=='rgb(36, 36, 36)'||check.artCount!==1||(dark&&check.cardBorders.some((color:string)=>color!=='rgb(36, 36, 36)'))||check.gradient!=='none'||check.ctaHeight<48||check.ctaRadius!=='100px'||check.bodyBackground!==(dark?'rgb(24, 24, 24)':'rgb(242, 242, 242)'))errors.push(label+': '+JSON.stringify(check));
   if(width===375)await page.screenshot({path:`qa/screenshots/r6/${label}.png`,fullPage:true});
  }
- for(const e of manifest){
-  await page.setViewportSize({width:375,height:900});const r=await page.goto(`${base}/emails/${e.id}/`,{waitUntil:'load'});
-  const check=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,emailWidth:document.querySelector('[data-email]')!.getBoundingClientRect().width,heading:getComputedStyle(document.querySelector('.h1')!).fontSize,images:[...document.images].every(i=>i.naturalWidth>0),iframe:!!document.querySelector('iframe'),notes:!!document.querySelector('#notes')}));reviewResults.push({id:e.id,http:r?.status(),...check});
-  if(r?.status()!==200||check.overflow||check.emailWidth!==375||check.heading!=='28px'||!check.images||check.iframe||!check.notes)errors.push('Review '+e.id+': '+JSON.stringify(check));
-  if(['w1','w2','c1','c2a','b1'].includes(e.id))await page.screenshot({path:`qa/screenshots/r6/review-${e.id}-375.png`,fullPage:true});
-  await page.setViewportSize({width:320,height:900});if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))errors.push('Review narrow overflow '+e.id);
- }
- for(const e of manifest){
-  await page.setViewportSize({width:1280,height:900});const r=await page.goto(`${base}/emails/${e.id}/desktop.html`);
-  const check=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,emailWidth:document.querySelector('[data-email]')!.getBoundingClientRect().width,heading:getComputedStyle(document.querySelector('.h1')!).fontSize,active:document.querySelector('.view-switch [aria-current]')?.textContent,stages:document.querySelectorAll('.review-stage').length,images:[...document.images].every(i=>i.naturalWidth>0)}));
-  reviewResults.push({id:e.id,version:'desktop',http:r?.status(),...check});
-  if(r?.status()!==200||check.overflow||check.emailWidth!==600||check.heading!=='34px'||check.active!=='Desktop'||check.stages!==1||!check.images)errors.push('Desktop review '+e.id+': '+JSON.stringify(check));
-  if(['w1','c1'].includes(e.id))await page.screenshot({path:`qa/screenshots/r6/review-${e.id}-desktop.png`,fullPage:true});
-  await page.getByRole('link',{name:'Mobile',exact:true}).click();if(!page.url().endsWith(`/emails/${e.id}/`)||await page.locator('.view-switch [aria-current]').innerText()!=='Mobile')errors.push('Mobile switch '+e.id);
-  await page.getByRole('link',{name:'Desktop',exact:true}).click();
-  await page.setViewportSize({width:320,height:900});if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))errors.push('Desktop narrow overflow '+e.id);
-  await page.goto(`${base}/boards/${e.id}.html`);if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1||!!document.querySelector('.strat')||getComputedStyle(document.querySelector('.board')!).display==='flex'))errors.push('Board is not single column '+e.id);
+ for(const e of manifest)for(const width of [375,1280]){
+  await page.setViewportSize({width,height:900});const target=width===1280?'desktop.html':'';const r=await page.goto(`${base}/emails/${e.id}/${target}`,{waitUntil:'load'});
+  const check=await page.evaluate(()=>{
+   const m=document.querySelector('.is-mobile [data-email]')!,d=document.querySelector('.is-desktop [data-email]')!;
+   const mr=m.getBoundingClientRect(),dr=d.getBoundingClientRect(),scroll=document.querySelector('.comparison-scroll')!;
+   return {overflow:document.documentElement.scrollWidth>innerWidth+1,mobileWidth:mr.width,desktopWidth:dr.width,aligned:Math.abs(mr.top-dr.top)<1,sideBySide:dr.left>=mr.right,mobileHeading:getComputedStyle(m.querySelector('.h1')!).fontSize,desktopHeading:getComputedStyle(d.querySelector('.h1')!).fontSize,stages:document.querySelectorAll('.review-stage').length,tabs:!!document.querySelector('.view-switch'),images:[...document.images].every(i=>i.naturalWidth>0),notes:!!document.querySelector('#notes'),canScroll:scroll.scrollWidth>scroll.clientWidth};
+  });reviewResults.push({id:e.id,width,http:r?.status(),...check});
+  if(r?.status()!==200||check.overflow||check.mobileWidth!==375||check.desktopWidth!==600||!check.aligned||!check.sideBySide||check.mobileHeading!=='28px'||check.desktopHeading!=='34px'||check.stages!==2||check.tabs||!check.images||!check.notes||(width===375&&!check.canScroll))errors.push('Comparison '+e.id+': '+JSON.stringify(check));
+  if(e.id==='w2'&&!await page.evaluate(()=>getComputedStyle(document.querySelector('.is-mobile .comparison-cell')!).display==='block'&&getComputedStyle(document.querySelector('.is-desktop .comparison-cell')!).display==='table-cell'))errors.push('Comparison cell layouts '+width);
+  if(width===1280&&['w1','w2','c1'].includes(e.id))await page.screenshot({path:`qa/screenshots/r6/compare-${e.id}.png`,fullPage:false});
+  if(width===375){await page.locator('.comparison-scroll').evaluate(el=>el.scrollLeft=el.scrollWidth);if(!await page.locator('.is-desktop').isVisible())errors.push('Desktop inaccessible in narrow comparison '+e.id);}
  }
  await page.setViewportSize({width:680,height:900});await page.goto(`${base}/preview/w1.html`);
  if(!await page.evaluate(()=>{const art=document.querySelector('[data-section="hero-art"]')!,hero=document.querySelector('[data-section="hero"]')!;return art.getBoundingClientRect().top>=hero.getBoundingClientRect().bottom-1&&getComputedStyle(art).backgroundColor==='rgb(247, 147, 30)'}))errors.push('Hero composition mismatch');
@@ -56,7 +50,7 @@ try{
  await page.getByText('Leave feedback on this email',{exact:true}).click();await page.locator('#reviewer').fill('QA reviewer');await page.locator('#decision').selectOption('Changes requested');await page.locator('#notes').fill('QA test: shorten the introduction.');
  await page.reload();await page.getByText('Leave feedback on this email',{exact:true}).click();if(await page.locator('#notes').inputValue()!=='QA test: shorten the introduction.')errors.push('Feedback persistence failed');
  const downloadPromise=page.waitForEvent('download');await page.locator('#download-feedback').click();const download=await downloadPromise;await download.saveAs('qa/feedback-sample.txt');const note=fs.readFileSync('qa/feedback-sample.txt','utf8');if(!note.includes('w1/')||!note.includes('Changes requested')||!note.includes('QA test:'))errors.push('Feedback export incomplete');
- await page.getByRole('link',{name:'Desktop',exact:true}).click();await page.getByText('Leave feedback on this email',{exact:true}).click();if(await page.locator('#notes').inputValue()!=='QA test: shorten the introduction.')errors.push('Feedback lost across versions');
+ await page.goto(`${base}/emails/w1/desktop.html`);await page.getByText('Leave feedback on this email',{exact:true}).click();if(await page.locator('#notes').inputValue()!=='QA test: shorten the introduction.')errors.push('Feedback lost on legacy comparison URL');
  for(const slug of ['restrictions','scope','brand','funnelkit','sharing','layout','references','figma','orange','campaign','campaign-map','coverage']){await page.setViewportSize({width:375,height:900});const r=await page.goto(`${base}/guides/${slug}/`);if(r?.status()!==200||await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))errors.push('Guide failure '+slug);}
  for(const e of manifest)for(const dark of [false,true])for(const mobile of [true,false]){
   const width=mobile?375:680;await page.setViewportSize({width,height:900});await page.goto(`${base}/figma/${e.id}-${mobile?'mobile':'desktop'}-${dark?'dark':'light'}.html`);

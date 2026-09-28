@@ -4,7 +4,7 @@ The current campaign is in `puratek-email/`. Use Node 22+, `npm ci`, then `npm r
 
 ## Delivered
 
-- 23 campaign roles and one alternative to W2; 24 dedicated review pages with mobile/desktop switches.
+- 23 campaign roles and one alternative to W2; 24 dedicated review pages with side-by-side mobile/desktop comparisons.
 - Team-supplied W1–W3 strategy and complete copy implemented as individually authored sections, including all four W1 product cards.
 - W2 Purity vs. Identity is primary; W2-alt preserves the earlier COA checklist. Choose one at Day 2.
 - 96 separate Figma HTML variants with embedded images and live text.
