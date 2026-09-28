@@ -10,7 +10,7 @@ The team's latest welcome copy is the editorial source. Build the campaign aroun
 4. Rewrite the other 20 email briefs/copy for a distinct role in this same campaign. Do not add a long discovery section to a saved-cart or service email just to match W1.
 5. Keep primary #F7931E, original logo files, 600px desktop / fluid mobile, table structure, inline styles and live editable text. Add an explicit branded illustration panel; use actual source vial photos in curated product modules. No invented COAs, labels or laboratory scenes.
 6. Dynamic cart images, item names, quantities, prices and restore links come from the installed FunnelKit event tag. Curated W1 products are static editorial selections, not personalization. Export replaces the complete sample cart with a configured plugin block.
-7. Deliver separate mobile/desktop and light/dark Figma HTML, review pages, source copy, flow specifications and FunnelKit module mapping. Verify browser rendering, links, blocked-image fallbacks, long cart content and export mapping. No live sending or platform activation.
+7. Deliver mobile/desktop Figma HTML in one brand palette, review pages, source copy, flow specifications and FunnelKit module mapping. Verify browser rendering, links, blocked-image fallbacks, long cart content and export mapping. No live sending or platform activation.
 
 ## Scope
 

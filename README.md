@@ -27,3 +27,5 @@ Import this repository with the repository root as Root Directory. The root `ver
 Generated sites, ZIPs, dependencies, local platform configuration and supplied third-party design references are excluded from Git. They are not needed to build the review site.
 
 See `puratek-email/README.md` for validation and export commands. All automation definitions are local specifications; nothing is activated by deploying this review site. Actual FunnelKit and Figma extension behavior needs installation-specific verification.
+
+Current design decisions and inventory reconciliation: [29 September feedback reference](docs/18-Feedback-and-Implementation-Reference.md). [Blank notes file](docs/19-Working-Notes.md) is available for future notes.

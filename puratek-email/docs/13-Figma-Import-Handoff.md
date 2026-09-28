@@ -1,8 +1,8 @@
 # Figma handoff — documentation campaign r6
 
-Import an individual file from `dist/figma/`, using the extension's URL or local-HTML mode. The directory page is only an index. Each email has mobile light/dark (375px) and desktop light/dark (680px viewport, 600px email).
+Import an individual file from `dist/figma/`, by serving it locally and capturing it with the browser extension, or importing its deployed URL. The directory page is only an index. Each email has mobile (375px) and desktop (680px viewport, 600px email), using the same brand palette.
 
-There are **96 files: 23 roles + one W2 alternative × four views**. W2-alt is not an additional scheduled email.
+There are **48 files: (23 roles + one W2 alternative) × two screen sizes**. W2-alt is not an additional scheduled email.
 
 Text, buttons, comparison cells, section labels, offers and product-card copy remain HTML. Illustrations, original logos and official catalog photographs are embedded raster assets. No scripts, iframes or remote font downloads are needed. The importer may rasterize or restructure HTML; native components and Auto Layout are not guaranteed until the actual extension is tested.
 
@@ -20,6 +20,6 @@ Original Puratek logos are preserved separately. 22 r5 editorial illustrations r
 
 Use **Download all emails + images (ZIP)** on the homepage, Figma library or any email review page. Every standard build creates `dist/downloads/puratek-all-emails.zip`, so the download is included in a static deployment automatically.
 
-The archive contains 96 Figma import pages, 24 FunnelKit HTML drafts, both responsive preview themes, all linked image assets, original illustration masters, original product photos, prompts, source metadata and instructions. Open `START-HERE.html` after extracting the complete archive. Import individual Figma HTML pages through your extension; the ZIP is not a native `.fig` file.
+The archive contains 48 Figma import pages, 24 FunnelKit HTML drafts, one responsive preview per design, all linked image assets, original illustration masters, original product photos, prompts, source metadata and instructions. Open `START-HERE.html` after extracting the complete archive. Import individual Figma HTML pages through your extension; the ZIP is not a native `.fig` file.
 
 The library shows all automation families, their launch status and the gaps found in the GreenLabs framework audit. Downloading the archive does not change their draft or incomplete status. Puratek uses 10%, not the other store’s 15%.

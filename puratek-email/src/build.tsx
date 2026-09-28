@@ -15,7 +15,7 @@ import { createHash } from "node:crypto";
 const ASSETS = JSON.parse(fs.readFileSync("assets/manifest.json", "utf8"));
 const MAIN_EMAILS: Email[] = [...EMAILS, ...LIFECYCLE].map(campaign).map(e => ({...e, status:e.status || "existing-copy-revised", art: ASSETS.find((a:any)=>a.usedIn.includes(e.id))}));
 const ALL_EMAILS=[...MAIN_EMAILS.slice(0,2),coaAlternative(MAIN_EMAILS[1]),...MAIN_EMAILS.slice(2)];
-const PREVIEW_DATE = process.env.PREVIEW_DATE || "2026-09-28";
+const PREVIEW_DATE = process.env.PREVIEW_DATE || "2026-09-29";
 const date = (days:number) => new Date(Date.parse(PREVIEW_DATE + "T12:00:00Z") + days * 86400000).toLocaleDateString("en-US", {year:"numeric",month:"long",day:"numeric",timeZone:"UTC"});
 if (!/^\d{4}-\d{2}-\d{2}$/.test(PREVIEW_DATE) || Number.isNaN(Date.parse(PREVIEW_DATE))) throw new Error("Invalid PREVIEW_DATE");
 
@@ -80,11 +80,11 @@ const li = (xs: string[]) => `<ul>${xs.map((x) => `<li>${esc(x)}</li>`).join("")
 
 function board(e: Email, emailHtml: string) {
   const body=emailHtml.match(/<body[^>]*>([\s\S]*)<\/body>/i)![1];
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(e.name)} · Puratek</title><style>${CSS.replace('@media (prefers-color-scheme:dark){','@media not all{')}body{margin:0;background:#F2F2F2;font-family:Arial,Helvetica,sans-serif;color:#242424}.board{max-width:600px;margin:auto}.inbox{padding:24px;font-size:14px;line-height:1.6}.inbox h1{font-size:22px;margin:0 0 12px}.notes{margin:16px 24px 32px;font-size:14px;line-height:1.6}.notes summary{cursor:pointer;font-weight:bold}a{color:#A44700}</style></head><body><main class="board"><header class="inbox"><h1>${esc(e.name)}</h1><strong>Subject:</strong> ${esc(e.subjectA)}<br/><strong>Preheader:</strong> ${esc(e.preheader)}</header>${body}<details class="notes"><summary>Purpose and timing</summary><p>${esc(e.strategy.goal)}</p><p>${esc(e.strategy.timing)}</p><p>Draft design. Sample dynamic data. <a href="../emails/${e.id}/">Open review and feedback</a>.</p></details></main></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(e.name)} · Puratek</title><style>${CSS}body{margin:0;background:#F2F2F2;font-family:Arial,Helvetica,sans-serif;color:#13172A}.board{max-width:600px;margin:auto}.inbox{padding:24px;font-size:14px;line-height:1.6}.inbox h1{font-size:22px;margin:0 0 12px}.notes{margin:16px 24px 32px;font-size:14px;line-height:1.6}.notes summary{cursor:pointer;font-weight:bold}a{color:#A44700}</style></head><body><main class="board"><header class="inbox"><h1>${esc(e.name)}</h1><strong>Subject:</strong> ${esc(e.subjectA)}<br/><strong>Preheader:</strong> ${esc(e.preheader)}</header>${body}<details class="notes"><summary>Purpose and timing</summary><p>${esc(e.strategy.goal)}</p><p>${esc(e.strategy.timing)}</p><p>Draft design. Sample dynamic data. <a href="../emails/${e.id}/">Open review and feedback</a>.</p></details></main></body></html>`;
 }
 
-function fixedStyles(mobile:boolean,dark:boolean) {
-  return CSS.replace('@media only screen and (max-width:620px){', mobile ? '@media all{' : '@media not all{').replace('@media (prefers-color-scheme:dark){', dark ? '@media all{' : '@media not all{');
+function fixedStyles(mobile:boolean) {
+  return CSS.replace('@media only screen and (max-width:620px){', mobile ? '@media all{' : '@media not all{');
 }
 function embed(html:string) {
   return html.replace(/src="\.\.\/assets\/([^"?]+)"/g, (_,file) => {
@@ -92,14 +92,14 @@ function embed(html:string) {
     return `src="data:${mime};base64,${fs.readFileSync(path.join('assets',file)).toString('base64')}"`;
   });
 }
-function figma(html:string,mobile:boolean,dark:boolean) {
+function figma(html:string,mobile:boolean) {
   return embed(html).replace(/<script[\s\S]*?<\/script>/gi,'')
-    .replace(/<style>[\s\S]*?<\/style>/, () => `<style>${fixedStyles(mobile,dark)}</style>`)
+    .replace(/<style>[\s\S]*?<\/style>/, () => `<style>${fixedStyles(mobile)}</style>`)
     .replace('</head>',`<style>html,body{width:${mobile?375:680}px;min-width:${mobile?375:680}px;max-width:${mobile?375:680}px;margin:0!important}*{animation:none!important}</style></head>`);
 }
 async function main() {
   fs.rmSync(OUT, { recursive: true, force: true });
-  for (const d of ["send", "preview", "preview-dark", "boards", "assets", "figma", "brand", "flows"]) fs.mkdirSync(path.join(OUT, d), { recursive: true });
+  for (const d of ["send", "preview", "boards", "assets", "figma", "brand", "flows"]) fs.mkdirSync(path.join(OUT, d), { recursive: true });
   for(const file of ['puratek-logo-dark@2x.png','puratek-logo-light@2x.png',...ASSETS.map((a:any)=>a.file),...PRODUCT_FILES]){const dest=path.join(OUT,'assets',file);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(path.join('assets',file),dest);}
   fs.writeFileSync(path.join(OUT,'assets/manifest.json'),JSON.stringify(ASSETS,null,2));
   const previews=new Map<string,string>();
@@ -108,16 +108,15 @@ async function main() {
     const send = await renderEmail(e, "send", HOSTED_LOGO);
     const prev = await renderEmail(e, "preview", "../assets/puratek-logo-dark@2x.png");
     previews.set(e.id,prev);
-    const light=prev.replace('@media (prefers-color-scheme:dark){','@media not all{');
     fs.writeFileSync(path.join(OUT, "send", `${e.id}.html`), send);
-    fs.writeFileSync(path.join(OUT, "preview", `${e.id}.html`), light);
-    fs.writeFileSync(path.join(OUT, "preview-dark", `${e.id}.html`), prev.replace("@media (prefers-color-scheme:dark){", "@media all{"));
+    fs.writeFileSync(path.join(OUT, "preview", `${e.id}.html`), prev);
+    fs.writeFileSync(path.join(OUT, `${e.id}.html`), prev.replace("@media (prefers-color-scheme:dark){", "@media all{"));
     fs.writeFileSync(path.join(OUT, "boards", `${e.id}.html`), board(e, embed(prev)));
-    for(const mobile of [false,true]) for(const dark of [false,true]) fs.writeFileSync(path.join(OUT,'figma',`${e.id}-${mobile?'mobile':'desktop'}-${dark?'dark':'light'}.html`),figma(prev,mobile,dark));
+    for(const mobile of [false,true]) fs.writeFileSync(path.join(OUT,'figma',`${e.id}-${mobile?'mobile':'desktop'}.html`),figma(prev,mobile));
     manifest.push({ ...e, audit: AUDIT[e.id] || null, auditDate:AUDIT[e.id]?'2026-09-28, before current revision':null, templateChanges: TEMPLATE_CHANGES, previewDate:PREVIEW_DATE, bytes: Buffer.byteLength(send), sendReady:false, launchRecommendation:LAUNCH_IDS.includes(e.id)?"proposed-start":"later-optional" });
   }
   fs.writeFileSync(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2));
-  writeReview(OUT,ALL_EMAILS,previews,fixedStyles(true,false),fixedStyles(false,false));
+  writeReview(OUT,ALL_EMAILS,previews,fixedStyles(true),fixedStyles(false));
   writeGuides(OUT);
   fs.writeFileSync(path.join(OUT,'flows/specification.json'),JSON.stringify({policy:POLICY,flows:FLOWS,opportunities:OPPORTUNITIES},null,2));
   fs.writeFileSync(path.join(OUT,'robots.txt'),'User-agent: *\nDisallow: /\n');
@@ -131,6 +130,6 @@ async function main() {
   fs.rmSync('dist.previous',{recursive:true,force:true});
   if(fs.existsSync('dist'))fs.renameSync('dist','dist.previous');
   fs.renameSync(OUT,'dist');
-  console.log(`Built ${manifest.length} templates, ${manifest.length*4} standalone Figma variants, dedicated client pages and researched guides. 7 proposed starters, 16 optional roles and 1 alternative. Draft send files only.`);
+  console.log(`Built ${manifest.length} templates, ${manifest.length*2} standalone Figma variants, dedicated client pages and researched guides. 7 proposed starters, 16 optional roles and 1 alternative. Draft send files only.`);
 }
 main().catch(error=>{console.error(error);process.exitCode=1});

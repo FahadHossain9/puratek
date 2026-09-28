@@ -1,24 +1,26 @@
-# Email design and asset review — revision 5
+# Email design and asset review — revision 7
+
+> Revision 7 unifies all outputs into one orange/navy/white palette and removes alternate theme exports. See 18-Feedback-and-Implementation-Reference.md.
 
 > Revision 6 adds real catalog vial photos, an original-logo panel with each illustration, and a new W3 checklist visual. `assets/products-r6/sources.json` records official image URLs and hashes; originals are retained. Earlier asset tiers below are historical and superseded for the client-requested W1 draft.
 
 Source: `Puratek peptide-20260928T092318Z-1-001.zip`, inspected 28 September 2026. It contains 14 product JPEGs, a long landing-page reference and a visual brand board. The board is a visual reference, not a verified legal/corporate fact sheet.
 
-## Current email interpretation — revision 5
+## Current email interpretation — revision 7
 
-Primary orange `#F7931E` fills the hero and its illustration region in every email. It also controls CTA fills, offer outlines and support accents. Headings on orange are charcoal `#242424`; main reading surfaces are white, with gray used only for secondary content. The original Puratek logos remain intact. A charcoal footer gives the email a clear endpoint.
+Primary orange `#F7931E` fills the hero and its illustration region in every email. It also controls CTA fills, offer outlines and support accents. Headings on orange are deep navy `#13172A`; main reading surfaces are white, with gray used only for secondary content. The original Puratek logos remain intact. A deep navy footer gives the email a clear endpoint.
 
 | Element | Current implementation |
 | --- | --- |
-| Primary orange | `#F7931E`, large hero surface in both themes |
-| Hero text | `#242424`; live HTML text |
+| Primary orange | `#F7931E`, large hero surface in the shared palette |
+| Hero text | `#13172A`; live HTML text |
 | Body | White/light gray; 16px / 25px copy |
 | Headline | 34px / 39px desktop; 28px / 33px mobile |
 | Width and insets | 600px max email; 32px desktop / 24px mobile |
 | Hero art | One unique 3:2 orange-and-white illustration per email, fluid 536px desktop / 327px at a 375px mobile width |
 | Radius | 12px artwork/support/offer details, 100px CTA |
-| Footer | Charcoal; existing light logo; readable 13px / 20px text |
-| Dark mode | Body surfaces adapt; hero stays orange with charcoal lettering |
+| Footer | Deep navy #13172A; existing light logo; readable 13px / 20px text |
+| Dark mode | One authored palette; no alternate theme exports |
 
 No fixed heights on text, no cream hero gradient, no gold-toned podium, no black coupon frame. All critical copy and buttons remain live text. Gradients, absolute positioning, overlapping content and external fonts are not layout dependencies.
 

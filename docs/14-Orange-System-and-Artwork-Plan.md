@@ -7,8 +7,8 @@ The client rejected revision 4's inconsistent colors, sparse artwork and disconn
 ## What changes
 
 - Primary orange `#F7931E` becomes a large continuous hero surface on every email, not a small accent. It also controls CTA fills, offer outlines, section accents and support accents.
-- Hero titles use charcoal on solid orange, with one consistent alignment and scale. The corresponding illustration follows immediately within the orange hero region. There is no cream gradient or separate ivory image card.
-- Neutral reading surfaces stay white; gray is used only for secondary content. The charcoal footer remains a restrained brand close. Dark-mode exports keep the orange hero and charcoal hero lettering; body surfaces adapt separately.
+- Hero titles use deep navy on solid orange, with one consistent alignment and scale. The corresponding illustration follows immediately within the orange hero region. There is no cream gradient or separate ivory image card.
+- Neutral reading surfaces stay white; gray is used only for secondary content. The deep navy footer remains a restrained brand close. The same navy, orange and white palette is used in every export.
 - Remove the thick charcoal coupon frame, gold-toned podium scenes and ambiguous W1 headline. Preserve original logo files, live text, required footer and the single-column layout.
 - Commission 23 distinct illustrations, one per template, using the same saturated-orange backdrop, matte-white objects, soft lighting, camera angle and orange accents. They are visual metaphors, not product photographs or evidence.
 
@@ -44,7 +44,7 @@ All imagery excludes product claims, invented certificates, promotional compound
 
 ## Figma / email boundary
 
-The 23 designs continue to produce 92 Figma HTML files (mobile/desktop, light/dark). Images are embedded in those exports; titles, buttons, coupons, captions and legal text stay live. The extension's native layers and Auto Layout remain unverified. FunnelKit exports keep hosted-image mappings and no base64 imagery.
+The 24 designs produce 48 Figma HTML files (mobile and desktop). Images are embedded in those exports; titles, buttons, coupons, captions and legal text stay live. The extension's native layers and Auto Layout remain unverified. FunnelKit exports keep hosted-image mappings and no base64 imagery.
 
 ## Verification
 

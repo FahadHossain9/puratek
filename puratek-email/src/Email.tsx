@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Html,Head,Body,Preview,Text,Heading,Img,Link,Button} from '@react-email/components';
 import {PROOF,type Email,type Block,type CampaignSection} from './content';
-import {T,R,FONT,DARK} from './design-tokens';
+import {T,R,FONT} from './design-tokens';
 import {layoutFor} from './layout';
 export {T} from './design-tokens';
 export type RenderOpts={logoLight:string;site:string;address:string;imageBase:string;preview?:boolean};
@@ -56,7 +56,7 @@ function Action({e}:{e:Email}){const linkStyle={color:T.orangeText,textDecoratio
  {e.afterCta&&<Text className="tx-m" style={{...paragraph,fontSize:14,color:T.muted,margin:'12px 0 0'}}>{e.afterCta}</Text>}
  </Section>);}
 export const CSS=`
-:root{color-scheme:light dark;supported-color-schemes:light dark}
+:root{color-scheme:light;supported-color-schemes:light}
 .email-hero,.hero-art{background-color:${T.orange}!important}.hero-ink{color:${T.heading}!important}
 table{mso-table-lspace:0pt;mso-table-rspace:0pt}a{word-break:normal}
 @media only screen and (max-width:620px){
@@ -64,16 +64,6 @@ table{mso-table-lspace:0pt;mso-table-rspace:0pt}a{word-break:normal}
  .comparison-cell{display:block!important;width:auto!important}.comparison-cell+.comparison-cell{border-left:0!important;border-top:1px solid #ddd!important}
  .h1{font-size:28px!important;line-height:33px!important}.btn{display:block!important;text-align:center!important}
 }
-@media (prefers-color-scheme:dark){
- .content-card{border-bottom-color:${DARK.card}!important}.support-card{border-color:#494949!important;border-left-color:${T.orange}!important}
- .bg-page{background-color:${DARK.page}!important}.bg-card{background-color:${DARK.card}!important}
- .bg-surface{background-color:${DARK.surface}!important}.bg-cream{background-color:${DARK.cream}!important}
- .tx-h{color:${DARK.heading}!important}.tx-b{color:${DARK.body}!important}.tx-m{color:${DARK.muted}!important}
- .tx-o,.lnk{color:${DARK.orange}!important}
-}
-[data-ogsb] .bg-page{background-color:${DARK.page}!important}[data-ogsb] .bg-card{background-color:${DARK.card}!important}
-[data-ogsb] .content-card{border-bottom-color:${DARK.card}!important}[data-ogsb] .support-card{border-color:#494949!important;border-left-color:${T.orange}!important}
-[data-ogsc] .tx-h{color:${DARK.heading}!important}[data-ogsc] .tx-b{color:${DARK.body}!important}[data-ogsc] .tx-m{color:${DARK.muted}!important}
 `;
 export function PuratekEmail({e,opts}:{e:Email;opts:RenderOpts}){
  const url=(p:string)=>`${opts.site}${p}?utm_source=email&utm_medium=footer&utm_campaign=${e.id}`;
@@ -81,10 +71,10 @@ export function PuratekEmail({e,opts}:{e:Email;opts:RenderOpts}){
  const footer:React.CSSProperties={fontFamily:FONT.body,fontSize:13,lineHeight:'20px',color:'#DDDDDD',margin:'0 0 14px'};
  const layout=layoutFor(e);
  const centered=false;
- return <Html lang="en"><Head><title>{e.subjectA}</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/><meta name="supported-color-schemes" content="light dark"/><meta name="format-detection" content="telephone=no,address=no,email=no"/><style>{CSS}</style></Head><Body className="bg-page" style={{backgroundColor:T.page,margin:0,padding:0,fontFamily:FONT.body}}><Preview>{e.preheader}</Preview>
+ return <Html lang="en"><Head><title>{e.subjectA}</title><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light"/><meta name="supported-color-schemes" content="light"/><meta name="format-detection" content="telephone=no,address=no,email=no"/><style>{CSS}</style></Head><Body className="bg-page" style={{backgroundColor:T.page,margin:0,padding:0,fontFamily:FONT.body}}><Preview>{e.preheader}</Preview>
  <table role="presentation" width="100%" cellPadding={0} cellSpacing={0} border={0} className="bg-page" style={{backgroundColor:T.page}}><tbody><tr><td align="center" style={{padding:'16px 0'}}>
  <table role="presentation" data-email={e.id} data-layout={layout.kind} className="container" width="600" cellPadding={0} cellSpacing={0} border={0} style={{width:'100%',maxWidth:600,margin:'0 auto',backgroundColor:T.white,borderCollapse:'separate'}}><tbody><tr><td>
- <Section name="brand" pad="24px 32px 20px" className="brand-bar" style={{borderTop:`3px solid ${T.orange}`,backgroundColor:T.white,textAlign:centered?'center':'left'}}><Link href={url('/')}><Img src={opts.logoLight} alt="Puratek" width={166} height={36} style={{display:'block',border:0,margin:centered?'0 auto':0}}/></Link></Section>
+ <Section name="brand" pad="24px 32px 20px" className="brand-bar" bg={T.navy} style={{borderTop:`3px solid ${T.orange}`,backgroundColor:T.navy,textAlign:centered?'center':'left'}}><Link href={url('/')}><Img src={opts.logoLight.replace('logo-dark','logo-light')} alt="Puratek" width={166} height={36} style={{display:'block',border:0,margin:centered?'0 auto':0}}/></Link></Section>
  <Section name="hero" pad="28px 32px 12px" bg={T.orange} className="email-hero" style={{textAlign:'left'}}>
  <Text className="hero-ink" style={{fontFamily:FONT.body,fontSize:11,lineHeight:'16px',fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:T.heading,margin:'0 0 12px'}}>{e.sections?e.eyebrow:layout.label}</Text>
  <Heading as="h1" className="h1 hero-ink" style={{fontFamily:FONT.heading,fontSize:34,lineHeight:'39px',fontWeight:700,color:T.heading,letterSpacing:'-0.7px',margin:0}}>{e.headline}</Heading>

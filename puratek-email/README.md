@@ -14,7 +14,7 @@ Review: http://127.0.0.1:5173/ — open one name at a time, compare mobile/deskt
 ## Outputs
 
 - `dist/send`: 24 FunnelKit Raw HTML deployment drafts; configure before importing.
-- `dist/figma`: 96 standalone files (24 designs × mobile/desktop × light/dark), embedded assets, no scripts/iframes.
+- `dist/figma`: 48 standalone files (24 designs × mobile/desktop, one brand palette), embedded assets, no scripts/iframes.
 - `dist/emails`: dedicated review pages.
 - `dist/flows/specification.json`: inactive portable specifications, not plugin import JSON.
 - `docs/05-Current-Copy-Deck.md`, `15-Campaign-Strategy-and-Implementation.md`, `16-Campaign-Role-and-Section-Map.md`: copy and strategy sources.
@@ -44,3 +44,5 @@ npm run funnelkit:export -- --config config/funnelkit.local.json
 A configured cart replaces the whole sample block; product images are supplied by the store. Raw HTML output does not create workflows or coupons. Seven initial templates cover welcome/cart. W2 or W2-alt occupy the same step. Other roles require their specified event/audience data.
 
 Actual extension import, native cart-row rendering, mailbox delivery, legal/provider eligibility and live automation state are not verified by the local build. No live sends or deployment were performed.
+
+Current design decisions and inventory reconciliation: [29 September feedback reference](docs/18-Feedback-and-Implementation-Reference.md). [Blank notes file](docs/19-Working-Notes.md) is available for future notes.
