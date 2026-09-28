@@ -1,6 +1,6 @@
 # Puratek feedback and implementation reference
 
-Updated 29 September 2026. This is the current reference for the email design revision.
+Updated 29 September 2026. For current hero, imagery, catalog and W2 decisions, see [revision 8 feedback implementation](20-Final-Marketer-Feedback.md). This document preserves the earlier inventory and integration context.
 
 ## Source and scope
 

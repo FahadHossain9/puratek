@@ -46,3 +46,5 @@ A configured cart replaces the whole sample block; product images are supplied b
 Actual extension import, native cart-row rendering, mailbox delivery, legal/provider eligibility and live automation state are not verified by the local build. No live sends or deployment were performed.
 
 Current design decisions and inventory reconciliation: [29 September feedback reference](docs/18-Feedback-and-Implementation-Reference.md). [Blank notes file](docs/19-Working-Notes.md) is available for future notes.
+
+Latest revision: [final marketer feedback](docs/20-Final-Marketer-Feedback.md) covers the navy/white hero system, 23 new product compositions, W2 COA checklist and responsive W1 catalog.

@@ -1,6 +1,6 @@
-# Puratek — current campaign copy deck (r6)
+# Puratek — current campaign copy deck (r8)
 
-Generated from the implementation. W1–W3 use team-supplied copy with punctuation normalized; W2-alt preserves the earlier checklist. Other roles are newly authored drafts. Exact visible coupon and product values require store configuration.
+Generated from the implementation. W1–W3 use team-supplied copy with punctuation normalized; W2 uses the recommended COA checklist; W2-alt retains the comparison for reference. Other roles are newly authored drafts. Exact visible coupon and product values require store configuration.
 
 ## W1 · The documentation standard
 
@@ -74,13 +74,77 @@ Prefer to see the full catalog?
 
 CTA: SHOP ALL RESEARCH PEPTIDES → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w1
 
-Artwork: automation-r5/w1.jpg
+Artwork: automation-r8/w1.jpg
 
 Purpose: Establish the documentation standard, introduce verification, then offer a curated catalog path.
 
 Timing: Immediately after recorded marketing opt-in
 
 ## W2 · Read the evidence
+
+Subject: Don’t just read the claim. Read the evidence.
+
+Alternative subject: What should a COA tell you?
+
+Preheader: Material, analytical evidence and batch: your COA checklist.
+
+**READ THE EVIDENCE**
+
+### Don’t Just Read the Claim. Read the Evidence.
+
+A purity number can tell you something. But when you’re evaluating a research material, the documentation behind that number matters too.
+
+Know what to look for. Then verify it for yourself.
+
+CTA: SEE WHAT TO LOOK FOR → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=w2
+
+### What Should a COA Actually Tell You?
+
+
+
+A useful Certificate of Analysis should give you more than a number. It should help you understand what was tested and what the reported result applies to.
+
+1. **WHAT WAS TESTED?** Identify the research material covered by the documentation.
+2. **WHAT DID THE TEST SHOW?** Review the reported analytical result and stated specification.
+3. **WHICH BATCH?** Check that the documentation can be connected to the relevant batch or lot.
+
+The goal isn’t to read every line of a COA. It’s to know which information matters when you’re evaluating the material.
+
+### Don’t Take Our Word for It.
+
+OPEN THE FILE
+
+Puratek makes batch-specific Certificates of Analysis available on its product pages, giving researchers the opportunity to review the available documentation before ordering.
+
+1. **INDEPENDENT TESTING** Purity and identity are independently tested.
+2. **BATCH-SPECIFIC COA** Documentation is connected to the relevant batch or lot.
+3. **PUBLIC DOCUMENTATION** The available testing information can be reviewed before you make your decision.
+
+The evidence is there to be examined, not simply claimed.
+
+CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=w2
+
+### Now Put the Checklist to Work.
+
+EXPLORE WITH THE EVIDENCE IN FRONT OF YOU
+
+You know what to look for.
+
+Now explore the research materials, review the available documentation, and evaluate what fits your research needs.
+
+1. **EXPLORE → REVIEW → VERIFY** Choose a material. Review the available information. Make your decision with the evidence in front of you.
+
+Your %%COUPON_CODE%% first-order offer is available whenever you’re ready to explore.
+
+CTA: EXPLORE THE MATERIALS → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w2
+
+Artwork: automation-r8/w2.jpg
+
+Purpose: Teach the COA checklist, open the documentation, then invite catalog review.
+
+Timing: Day 2; no first order and no competing cart message
+
+## W2 alternative · Purity and identity
 
 Subject: Don’t just read the claim. Read the evidence.
 
@@ -138,75 +202,11 @@ Your %%COUPON_CODE%% first-order offer is available whenever you’re ready to e
 
 CTA: EXPLORE THE MATERIALS → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w2
 
-Artwork: automation-r5/w2.jpg
+Artwork: automation-r8/w2.jpg
 
-Purpose: Teach purity versus identity, open the documentation, then invite evidence-led catalog review.
+Purpose: Retained purity and identity comparison for reference; not an additional send.
 
-Timing: Day 2; no first order and no competing cart message
-
-## W2 alternative · COA checklist
-
-Subject: Don’t just read the claim. Read the evidence.
-
-Alternative subject: Purity and identity ask different questions
-
-Preheader: Understand the distinction, then inspect the available COA.
-
-**READ THE EVIDENCE**
-
-### Don’t Just Read the Claim. Read the Evidence.
-
-A purity number can tell you something. But when you’re evaluating a research material, the documentation behind that number matters too.
-
-Know what to look for. Then verify it for yourself.
-
-CTA: SEE WHAT TO LOOK FOR → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=w2
-
-### What Should a COA Actually Tell You?
-
-
-
-A useful Certificate of Analysis should give you more than a number. It should help you understand what was tested and what the reported result applies to.
-
-1. **WHAT WAS TESTED?** Identify the research material covered by the documentation.
-2. **WHAT DID THE TEST SHOW?** Review the reported analytical result and stated specification.
-3. **WHICH BATCH?** Check that the documentation can be connected to the relevant batch or lot.
-
-The goal isn’t to read every line of a COA. It’s to know which information matters when you’re evaluating the material.
-
-### Don’t Take Our Word for It.
-
-OPEN THE FILE
-
-Puratek makes batch-specific Certificates of Analysis available on its product pages, giving researchers the opportunity to review the available documentation before ordering.
-
-1. **INDEPENDENT TESTING** Purity and identity are independently tested.
-2. **BATCH-SPECIFIC COA** Documentation is connected to the relevant batch or lot.
-3. **PUBLIC DOCUMENTATION** The available testing information can be reviewed before you make your decision.
-
-The evidence is there to be examined, not simply claimed.
-
-CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=w2
-
-### Now Put the Checklist to Work.
-
-EXPLORE WITH THE EVIDENCE IN FRONT OF YOU
-
-You know what to look for.
-
-Now explore the research materials, review the available documentation, and evaluate what fits your research needs.
-
-1. **EXPLORE → REVIEW → VERIFY** Choose a material. Review the available information. Make your decision with the evidence in front of you.
-
-Your %%COUPON_CODE%% first-order offer is available whenever you’re ready to explore.
-
-CTA: EXPLORE THE MATERIALS → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w2
-
-Artwork: automation-r5/w2.jpg
-
-Purpose: Earlier team-supplied COA-checklist option retained for side-by-side review.
-
-Timing: Alternative to W2 at Day 2; choose one version, never send both
+Timing: Archived editorial alternative to W2; recommended sequence uses the COA checklist
 
 ## W3 · Know what to look for
 
@@ -256,7 +256,7 @@ Review the products, check the available information, and decide when the time i
 
 CTA: EXPLORE THE CATALOG → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w3
 
-Artwork: automation-r6/w3.jpg
+Artwork: automation-r8/w3.jpg
 
 Purpose: Turn education into a practical specifications/documentation/traceability evaluation.
 
@@ -275,6 +275,8 @@ Preheader: Documentation, questions and your first-order offer.
 ### The standard stays the same.
 
 If you’re still evaluating Puratek, start with the material’s information and the documentation behind it.
+
+CTA: EXPLORE PURATEK → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w4
 
 ### Before you decide.
 
@@ -295,7 +297,7 @@ If you’re still evaluating Puratek, start with the material’s information an
 
 CTA: EXPLORE THE CATALOG → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=w4
 
-Artwork: automation-r5/w4.jpg
+Artwork: automation-r8/w4.jpg
 
 Purpose: Optional welcome follow-up for engaged nonbuyers, only while the offer is valid.
 
@@ -331,7 +333,7 @@ CTA: RETURN TO MY CART → %%CART_LINK%%
 
 If you need help locating the relevant batch document, reply to this email.
 
-Artwork: automation-r5/c1.jpg
+Artwork: automation-r8/c1.jpg
 
 Purpose: Restore the selected cart with minimal distraction; no new recommendations.
 
@@ -369,7 +371,7 @@ Choosing a research supplier starts with evaluating the material and its documen
 
 CTA: RETURN TO MY CART → %%CART_LINK%%
 
-Artwork: automation-r5/c2a.jpg
+Artwork: automation-r8/c2a.jpg
 
 Purpose: First-order cart branch: answer documentation hesitation and show the approved offer.
 
@@ -399,7 +401,7 @@ Your selection is still saved. Review the current product information and availa
 
 CTA: RETURN TO MY CART → %%CART_LINK%%
 
-Artwork: automation-r5/c2b.jpg
+Artwork: automation-r8/c2b.jpg
 
 Purpose: Returning-customer branch: current batch information, no automatic discount.
 
@@ -439,7 +441,7 @@ Documentation should be easy to find and understand. Here are three places to st
 
 CTA: RETURN TO MY CART → %%CART_LINK%%
 
-Artwork: automation-r5/c3.jpg
+Artwork: automation-r8/c3.jpg
 
 Purpose: Resolve the remaining information gap without introducing a stronger discount.
 
@@ -467,7 +469,7 @@ Our team can help locate a batch document or explain the ordering information.
 
 CTA: CONTACT OUR TEAM → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=c4
 
-Artwork: automation-r5/c4.jpg
+Artwork: automation-r8/c4.jpg
 
 Purpose: Optional final support note only; no invented cart expiry or urgency.
 
@@ -505,7 +507,7 @@ Explore the available certifications and ask our team if the batch reference is 
 
 CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=b1
 
-Artwork: automation-r5/b1.jpg
+Artwork: automation-r8/b1.jpg
 
 Purpose: Educational broadcast for engaged subscribers; deepen W2 rather than repeat the welcome offer.
 
@@ -543,7 +545,7 @@ Documentation matters before an order. Clear communication matters after it.
 
 CTA: VIEW SHIPPING POLICY → https://puratekpeptides.com/shipping-policy/?utm_source=email&utm_medium=flow&utm_campaign=b2
 
-Artwork: automation-r5/b2.jpg
+Artwork: automation-r8/b2.jpg
 
 Purpose: Explain service touchpoints without promising an unverified dispatch outcome.
 
@@ -573,7 +575,7 @@ If you’re already evaluating a research material, review its specifications an
 
 CTA: EXPLORE THE CATALOG → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=b3
 
-Artwork: automation-r5/b3.jpg
+Artwork: automation-r8/b3.jpg
 
 Purpose: Optional approved promotion; no automatic discount calendar or product recommendations.
 
@@ -601,7 +603,7 @@ When contacting our team, include your order reference and the product or docume
 
 CTA: CONTACT OUR TEAM → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=p1
 
-Artwork: automation-r5/p1.jpg
+Artwork: automation-r8/p1.jpg
 
 Purpose: Optional marketing service orientation; avoid duplicating the transactional receipt.
 
@@ -639,7 +641,7 @@ Retain the matching documentation alongside your order details.
 
 CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=p2
 
-Artwork: automation-r5/p2.jpg
+Artwork: automation-r8/p2.jpg
 
 Purpose: Post-dispatch documentation continuity; do not imply delivery before a verified event.
 
@@ -667,7 +669,7 @@ Was a document difficult to locate? Did an order update leave a question unanswe
 
 CTA: SHARE SERVICE FEEDBACK → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=p3
 
-Artwork: automation-r5/p3.jpg
+Artwork: automation-r8/p3.jpg
 
 Purpose: Ask for service feedback after verified delivery; no outcome testimonials.
 
@@ -695,7 +697,7 @@ Include your order reference, material name and batch or lot number in your repl
 
 CTA: ASK ABOUT DOCUMENTATION → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=p4
 
-Artwork: automation-r5/p4.jpg
+Artwork: automation-r8/p4.jpg
 
 Purpose: Optional documentation assistance; skip contacts with an active support case.
 
@@ -723,7 +725,7 @@ Check the selected variation, available specifications and corresponding batch d
 
 CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=r1
 
-Artwork: automation-r5/r1.jpg
+Artwork: automation-r8/r1.jpg
 
 Purpose: Repeat-purchase education based on engagement, never assumed usage or depletion.
 
@@ -751,7 +753,7 @@ Open the material’s page, check its available variation and review the relevan
 
 CTA: EXPLORE THE CATALOG → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=r2
 
-Artwork: automation-r5/r2.jpg
+Artwork: automation-r8/r2.jpg
 
 Purpose: An engaged-purchaser catalog invitation without speculative recommendations.
 
@@ -779,7 +781,7 @@ There is no purchasing schedule to follow. If a document or order detail needs c
 
 CTA: EXPLORE THE CATALOG → https://puratekpeptides.com/shop/?utm_source=email&utm_medium=flow&utm_campaign=r3
 
-Artwork: automation-r5/r3.jpg
+Artwork: automation-r8/r3.jpg
 
 Purpose: Low-pressure planning touchpoint, conditional on recent meaningful engagement.
 
@@ -807,7 +809,7 @@ Explore the available batch documentation or contact the team with a question. I
 
 CTA: VIEW THE COA → https://puratekpeptides.com/certifications/?utm_source=email&utm_medium=flow&utm_campaign=x1
 
-Artwork: automation-r5/x1.jpg
+Artwork: automation-r8/x1.jpg
 
 Purpose: One evidence-led re-engagement invitation for an approved consented segment.
 
@@ -835,7 +837,7 @@ You do not need to place an order to ask a documentation or service question. Re
 
 CTA: CONTACT OUR TEAM → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=x2
 
-Artwork: automation-r5/x2.jpg
+Artwork: automation-r8/x2.jpg
 
 Purpose: Re-engagement through a useful service conversation, no fabricated familiarity.
 
@@ -863,7 +865,7 @@ Otherwise, we’ll pause marketing emails after this series. You can also unsubs
 
 CTA: MANAGE EMAIL PREFERENCES → %%PREFERENCES_URL%%
 
-Artwork: automation-r5/x3.jpg
+Artwork: automation-r8/x3.jpg
 
 Purpose: Honor a real sunset rule after nonresponse; requires suppression integration.
 
@@ -891,7 +893,7 @@ Reply with the material or batch reference you’re reviewing and the question y
 
 CTA: CONTACT OUR TEAM → https://puratekpeptides.com/contact-us/?utm_source=email&utm_medium=flow&utm_campaign=h1
 
-Artwork: automation-r5/h1.jpg
+Artwork: automation-r8/h1.jpg
 
 Purpose: Support-led branch for complex/high-value carts; replaces standard cart reminders.
 

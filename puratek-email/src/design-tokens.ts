@@ -9,5 +9,5 @@ export const T = {
 export const R = {email:16,offer:12,board:16,hub:14,button:100};
 export const FONT = {heading:'Arial, Helvetica, sans-serif',body:'Arial, Helvetica, sans-serif',mono:"Consolas, 'Courier New', monospace"};
 export const DIMENSIONS={container:600,desktopViewport:680,mobileViewport:375,desktopPadding:32,mobilePadding:24};
-// One authored palette: logo orange, website navy, white reading surfaces.
+// One authored palette: white hero copy on website navy; logo orange accents and white reading surfaces.
 export const GRADIENT='none';

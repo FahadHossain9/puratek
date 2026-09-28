@@ -35,6 +35,10 @@ function Comparison(){
  const columns=[['PURITY','How much of the material meets the stated purity specification','Purity analysis','HPLC / relevant analytical evidence','How pure is it?'],['IDENTITY','Whether the material is actually the compound it claims to be','Identity confirmation','Mass spectrometry / relevant identity evidence','What is it?']];
  return <table data-comparison="true" aria-label="Purity versus identity" width="100%" cellPadding={0} cellSpacing={0} style={{tableLayout:'fixed',border:`1px solid ${T.line}`,borderRadius:12,margin:'20px 0'}}><tbody><tr>{columns.map((c,i)=><td key={c[0]} className="comparison-cell bg-card" width="50%" style={{verticalAlign:'top',padding:20,backgroundColor:T.white,borderLeft:i?`1px solid ${T.line}`:0}}><Label>{c[0]}</Label><Text className="tx-h" style={{...paragraph,fontWeight:700,color:T.heading}}>{c[4]}</Text><Text className="tx-b" style={{...paragraph,fontSize:14,lineHeight:'22px'}}>{c[1]}</Text><Text className="tx-b" style={{...paragraph,fontSize:14,lineHeight:'22px'}}>{c[2]}</Text><Text className="tx-m" style={{...paragraph,fontSize:13,lineHeight:'21px',color:T.muted,margin:0}}>{c[3]}</Text></td>)}</tr></tbody></table>;
 }
+function ProductGrid({products,opts}:{products:NonNullable<CampaignSection['products']>;opts:RenderOpts}){
+ const card=(p:NonNullable<CampaignSection['products']>[number])=><table data-product={p.name} role="presentation" width="100%" cellPadding={0} cellSpacing={0} style={{border:`1px solid ${T.line}`,borderRadius:12,margin:0}}><tbody><tr><td align="center" style={{padding:16,backgroundColor:'#FAFAFA',borderRadius:'12px 12px 0 0'}}><Link href={p.href}><Img src={`${opts.imageBase}/${p.file}`} alt={`${p.name} — original Puratek catalog photograph`} width={160} height={184} style={{display:'block',width:160,height:'auto',maxWidth:'100%'}}/></Link></td></tr><tr><td style={{padding:20}}><Heading as="h3" className="tx-h" style={{...paragraph,fontWeight:700,fontSize:21,color:T.heading,margin:'0 0 8px'}}>{p.name}</Heading><Text className="tx-b" style={paragraph}>{p.copy}</Text><Link className="lnk" href={p.href} style={{display:'block',fontFamily:FONT.body,fontSize:13,fontWeight:700,lineHeight:'22px',padding:'14px 0',color:T.orangeText}}>{p.cta} →</Link></td></tr></tbody></table>;
+ return <table data-product-grid="true" role="presentation" width="100%" cellPadding={0} cellSpacing={0} style={{tableLayout:'fixed',margin:'24px 0'}}><tbody>{Array.from({length:Math.ceil(products.length/2)},(_,row)=><tr key={row}>{products.slice(row*2,row*2+2).map(p=><td className="product-cell" width="50%" key={p.name} style={{verticalAlign:'top',padding:'0 8px 16px',width:'50%'}}>{card(p)}</td>)}</tr>)}</tbody></table>;
+}
 function CampaignBlock({section:s,opts}:{section:CampaignSection;opts:RenderOpts}){
  return <Section name={s.id} bg={s.tone==='surface'?T.surface:T.white} className={s.tone==='surface'?'bg-surface':'bg-card'} pad="32px 32px">
  {s.eyebrow&&<Label>{s.eyebrow}</Label>}
@@ -42,7 +46,7 @@ function CampaignBlock({section:s,opts}:{section:CampaignSection;opts:RenderOpts
  {s.paragraphs?.map((text,i)=><Text key={i} className="tx-b" style={paragraph}>{text}</Text>)}
  {s.comparison&&<Comparison/>}
  {s.items?.map(([title,copy],i)=><table role="presentation" key={title} width="100%" cellPadding={0} cellSpacing={0} style={{margin:'20px 0',borderTop:`2px solid ${T.orange}`}}><tbody><tr><td style={{paddingTop:16}}><Label>{String(i+1).padStart(2,'0')}</Label><Heading as="h3" className="tx-h" style={{...paragraph,fontSize:19,lineHeight:'25px',fontWeight:700,color:T.heading,margin:'0 0 8px'}}>{title}</Heading><Text className="tx-b" style={{...paragraph,margin:0}}>{copy}</Text></td></tr></tbody></table>)}
- {s.products?.map(p=><table data-product={p.name} key={p.name} role="presentation" width="100%" cellPadding={0} cellSpacing={0} style={{border:`1px solid ${T.line}`,borderRadius:12,margin:'24px 0'}}><tbody><tr><td align="center" style={{padding:16,backgroundColor:'#FAFAFA',borderRadius:'12px 12px 0 0'}}><Link href={p.href}><Img src={`${opts.imageBase}/${p.file}`} alt={`${p.name} — original Puratek catalog photograph`} width={160} height={184} style={{display:'block',width:160,height:'auto',maxWidth:'100%'}}/></Link></td></tr><tr><td style={{padding:20}}><Heading as="h3" className="tx-h" style={{...paragraph,fontWeight:700,fontSize:21,color:T.heading,margin:'0 0 8px'}}>{p.name}</Heading><Text className="tx-b" style={paragraph}>{p.copy}</Text><Link className="lnk" href={p.href} style={{display:'block',fontFamily:FONT.body,fontSize:13,fontWeight:700,lineHeight:'22px',padding:'14px 0',color:T.orangeText}}>{p.cta} →</Link></td></tr></tbody></table>)}
+ {s.products&&<ProductGrid products={s.products} opts={opts}/>}
  {s.cart&&<Cart/>}
  {s.offer&&<Offer offer={s.offer}/>}
  {s.setup&&<Text className="tx-b" style={{...paragraph,margin:'18px 0'}}>{s.setup}</Text>}
@@ -57,9 +61,10 @@ function Action({e}:{e:Email}){const linkStyle={color:T.orangeText,textDecoratio
  </Section>);}
 export const CSS=`
 :root{color-scheme:light;supported-color-schemes:light}
-.email-hero,.hero-art{background-color:${T.orange}!important}.hero-ink{color:${T.heading}!important}
+.email-hero,.hero-art{background-color:${T.navy}!important}.hero-ink{color:${T.white}!important}.hero-eyebrow{color:${T.orangeOnNavy}!important}
 table{mso-table-lspace:0pt;mso-table-rspace:0pt}a{word-break:normal}
 @media only screen and (max-width:620px){
+ .product-cell{display:block!important;width:auto!important;padding:0 0 16px!important}
  .container{width:100%!important}.px{padding-left:24px!important;padding-right:24px!important}
  .comparison-cell{display:block!important;width:auto!important}.comparison-cell+.comparison-cell{border-left:0!important;border-top:1px solid #ddd!important}
  .h1{font-size:28px!important;line-height:33px!important}.btn{display:block!important;text-align:center!important}
@@ -75,13 +80,15 @@ export function PuratekEmail({e,opts}:{e:Email;opts:RenderOpts}){
  <table role="presentation" width="100%" cellPadding={0} cellSpacing={0} border={0} className="bg-page" style={{backgroundColor:T.page}}><tbody><tr><td align="center" style={{padding:'16px 0'}}>
  <table role="presentation" data-email={e.id} data-layout={layout.kind} className="container" width="600" cellPadding={0} cellSpacing={0} border={0} style={{width:'100%',maxWidth:600,margin:'0 auto',backgroundColor:T.white,borderCollapse:'separate'}}><tbody><tr><td>
  <Section name="brand" pad="24px 32px 20px" className="brand-bar" bg={T.navy} style={{borderTop:`3px solid ${T.orange}`,backgroundColor:T.navy,textAlign:centered?'center':'left'}}><Link href={url('/')}><Img src={opts.logoLight.replace('logo-dark','logo-light')} alt="Puratek" width={166} height={36} style={{display:'block',border:0,margin:centered?'0 auto':0}}/></Link></Section>
- <Section name="hero" pad="28px 32px 12px" bg={T.orange} className="email-hero" style={{textAlign:'left'}}>
- <Text className="hero-ink" style={{fontFamily:FONT.body,fontSize:11,lineHeight:'16px',fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:T.heading,margin:'0 0 12px'}}>{e.sections?e.eyebrow:layout.label}</Text>
- <Heading as="h1" className="h1 hero-ink" style={{fontFamily:FONT.heading,fontSize:34,lineHeight:'39px',fontWeight:700,color:T.heading,letterSpacing:'-0.7px',margin:0}}>{e.headline}</Heading>
- {e.heroCopy?.map((text,i)=><Text key={i} className="hero-ink" style={{...paragraph,color:T.heading,margin:"16px 0 0"}}>{text}</Text>)}
+ <Section name="hero" pad="20px 32px 12px" bg={T.navy} className="email-hero" style={{textAlign:'left'}}>
+ <Text className="hero-eyebrow" style={{fontFamily:FONT.body,fontSize:11,lineHeight:'16px',fontWeight:700,letterSpacing:'1.5px',textTransform:'uppercase',color:T.orangeOnNavy,margin:'0 0 12px'}}>{e.sections?e.eyebrow:layout.label}</Text>
+ <Heading as="h1" className="h1 hero-ink" style={{fontFamily:FONT.heading,fontSize:34,lineHeight:'39px',fontWeight:700,color:T.white,letterSpacing:'-0.7px',margin:0}}>{e.headline}</Heading>
+ {e.heroCopy?.map((text,i)=><Text key={i} className="hero-ink" style={{...paragraph,color:T.white,margin:"16px 0 0"}}>{text}</Text>)}
  </Section>
- {e.art&&<Section name="hero-art" bg={T.orange} className="hero-art" pad="16px 32px 28px"><table role="presentation" width="100%" cellPadding={0} cellSpacing={0}><tbody><tr><td><Img data-editorial-art="true" src={`${opts.imageBase}/${e.art.file}`} alt={e.art.alt} width={536} height={Math.round(536*(e.art.height||800)/(e.art.width||1200))} style={{display:'block',width:'100%',maxWidth:536,height:'auto',borderRadius:'12px 12px 0 0'}}/></td></tr><tr><td style={{backgroundColor:T.heading,borderRadius:'0 0 12px 12px',padding:'18px 20px'}}><Img src={opts.logoLight.replace('logo-dark','logo-light')} alt="Puratek" width={112} height={24} style={{display:'block',margin:'0 0 10px'}}/><Text style={{fontFamily:FONT.body,fontSize:12,lineHeight:'18px',color:'#FFFFFF',margin:0}}>Quality You Can Verify, Not Just Trust.</Text></td></tr></tbody></table></Section>}
- {e.sections?<>{e.heroAction&&<Section name="hero-action"><CampaignButton action={e.heroAction}/></Section>}{e.sections.map(section=><CampaignBlock key={section.id} section={section} opts={opts}/>)}</>:<>
+ {e.heroAction&&<Section name="hero-action" bg={T.navy} className="hero-art" pad="20px 32px 12px"><CampaignButton action={e.heroAction}/></Section>}
+ {e.art&&<Section name="hero-art" bg={T.navy} className="hero-art" pad="20px 32px 32px"><Img data-editorial-art="true" src={`${opts.imageBase}/${e.art.file}`} alt={e.art.alt} width={536} height={Math.round(536*(e.art.height||800)/(e.art.width||1200))} style={{display:'block',width:'100%',maxWidth:536,height:'auto',borderRadius:12}}/>{e.cart&&<Text style={{fontFamily:FONT.body,fontSize:11,lineHeight:'17px',color:'#DDDDDD',margin:'12px 0 0'}}>Product imagery is illustrative. Your saved items appear below.</Text>}</Section>}
+
+ {e.sections?<>{e.sections.map(section=><CampaignBlock key={section.id} section={section} opts={opts}/>)}</>:<>
  {layout.offerFirst&&<Action e={e}/>}
  <Section name="body" pad="28px 32px 12px"><Label>{layout.bodyLabel}</Label>
  {e.body.map((b,i)=><BlockView key={i} b={b}/>)}

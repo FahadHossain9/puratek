@@ -1,5 +1,6 @@
 # Puratek documentation campaign — revision 6 implementation plan
 
+> Current design: revision 8 uses white hero copy on #13172A navy, orange accents, 23 product-led images and the W2 COA checklist. See [final marketer feedback](20-Final-Marketer-Feedback.md). Earlier revision descriptions below are historical.
 The team's latest welcome copy is the editorial source. Build the campaign around **standard → evidence → evaluation → purchase support → batch continuity**, rather than fitting every message into a coupon template. Brand source: puratekpeptides.com, reviewed 28 September 2026.
 
 ## Implementation

@@ -1,5 +1,6 @@
 # Email design and asset review — revision 7
 
+> Current design: revision 8 uses white hero copy on #13172A navy, orange accents, 23 product-led images and the W2 COA checklist. See [final marketer feedback](20-Final-Marketer-Feedback.md). Earlier revision descriptions below are historical.
 > Revision 7 unifies all outputs into one orange/navy/white palette and removes alternate theme exports. See 18-Feedback-and-Implementation-Reference.md.
 
 > Revision 6 adds real catalog vial photos, an original-logo panel with each illustration, and a new W3 checklist visual. `assets/products-r6/sources.json` records official image URLs and hashes; originals are retained. Earlier asset tiers below are historical and superseded for the client-requested W1 draft.

@@ -6,18 +6,18 @@ import {validate} from './validate';
 const check=validate();if(check.errors.length)throw new Error(check.errors.join('\n'));
 for(const file of ['qa/render-report.json','qa/flow-scenarios.json'])if(!fs.existsSync(file))throw new Error(`Run QA first: ${file}`);
 const render=JSON.parse(fs.readFileSync('qa/render-report.json','utf8'));if(render.errors.length)throw new Error('Render QA has failures');
-const fingerprint=createHash('sha256').update(fs.readFileSync('dist/checksums.json')).digest('hex');if(render.revision!=='r7'||render.sourceChecksum!==fingerprint)throw new Error('Render QA is stale; rerun qa:render');
+const fingerprint=createHash('sha256').update(fs.readFileSync('dist/checksums.json')).digest('hex');if(render.revision!=='r8'||render.sourceChecksum!==fingerprint)throw new Error('Render QA is stale; rerun qa:render');
 const root='handoff/puratek-email-mobile-review';fs.mkdirSync('handoff',{recursive:true});fs.rmSync(root,{recursive:true,force:true});fs.mkdirSync(root,{recursive:true});
 for(const name of ['dist','src','scripts'])fs.cpSync(name,path.join(root,name),{recursive:true});
 for(const name of ['package.json','package-lock.json','README.md','vercel.json','.gitignore'])fs.copyFileSync(name,path.join(root,name));
 fs.cpSync('dist/assets',path.join(root,'assets'),{recursive:true});
-for(const folder of ['automation-r5','automation-r6','products-r6'])fs.cpSync('assets/'+folder,path.join(root,'assets',folder),{recursive:true});
+for(const folder of ['automation-r8','products-r6'])fs.cpSync('assets/'+folder,path.join(root,'assets',folder),{recursive:true});
 fs.mkdirSync(path.join(root,'config'));fs.copyFileSync('config/funnelkit.example.json',path.join(root,'config/funnelkit.example.json'));
 const docs=fs.existsSync('../docs/06-US-Email-Restrictions.md')?'../docs':'docs';fs.cpSync(docs,path.join(root,'docs'),{recursive:true});
-fs.mkdirSync(path.join(root,'qa/screenshots'),{recursive:true});fs.cpSync('qa/screenshots/r6',path.join(root,'qa/screenshots/r6'),{recursive:true});
+fs.mkdirSync(path.join(root,'qa/screenshots'),{recursive:true});fs.cpSync('qa/screenshots/r8',path.join(root,'qa/screenshots/r8'),{recursive:true});
 for(const file of fs.readdirSync('qa'))if(fs.statSync(path.join('qa',file)).isFile())fs.copyFileSync(path.join('qa',file),path.join(root,'qa',file));
 if(fs.existsSync('../skill'))fs.cpSync('../skill',path.join(root,'skill'),{recursive:true});
-fs.writeFileSync(path.join(root,'START-HERE.md'),`# Puratek mobile review — revision 7
+fs.writeFileSync(path.join(root,'START-HERE.md'),`# Puratek mobile review — revision 8
 
 Use Node 22+, run npm ci and npm run serve, then open http://127.0.0.1:5173/.
 

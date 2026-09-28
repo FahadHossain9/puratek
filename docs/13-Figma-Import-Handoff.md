@@ -23,3 +23,5 @@ Use **Download all emails + images (ZIP)** on the homepage, Figma library or any
 The archive contains 48 Figma import pages, 24 FunnelKit HTML drafts, one responsive preview per design, all linked image assets, original illustration masters, original product photos, prompts, source metadata and instructions. Open `START-HERE.html` after extracting the complete archive. Import individual Figma HTML pages through your extension; the ZIP is not a native `.fig` file.
 
 The library shows all automation families, their launch status and the gaps found in the GreenLabs framework audit. Downloading the archive does not change their draft or incomplete status. Puratek uses 10%, not the other store’s 15%.
+
+Revision 8: all views use white hero text on navy with product compositions. W2 is the COA checklist; W2-alt is the reference comparison. Desktop W1 catalog uses two columns, mobile uses one.

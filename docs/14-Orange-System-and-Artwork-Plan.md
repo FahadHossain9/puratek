@@ -1,5 +1,6 @@
 # Revision 5 — one orange system, 23 purpose-specific illustrations
 
+> Current design: revision 8 uses white hero copy on #13172A navy, orange accents, 23 product-led images and the W2 COA checklist. See [final marketer feedback](20-Final-Marketer-Feedback.md). Earlier revision descriptions below are historical.
 > Historical r5 artwork plan. Current campaign sections and source decisions are in guide 15. W3’s parcel artwork is replaced by `automation-r6/w3.jpg`; the other 22 illustrations remain active in branded panels.
 
 The client rejected revision 4's inconsistent colors, sparse artwork and disconnected hero. This revision supersedes its visual direction.

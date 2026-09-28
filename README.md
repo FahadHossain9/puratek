@@ -29,3 +29,5 @@ Generated sites, ZIPs, dependencies, local platform configuration and supplied t
 See `puratek-email/README.md` for validation and export commands. All automation definitions are local specifications; nothing is activated by deploying this review site. Actual FunnelKit and Figma extension behavior needs installation-specific verification.
 
 Current design decisions and inventory reconciliation: [29 September feedback reference](docs/18-Feedback-and-Implementation-Reference.md). [Blank notes file](docs/19-Working-Notes.md) is available for future notes.
+
+Latest revision: [final marketer feedback](docs/20-Final-Marketer-Feedback.md) covers the navy/white hero system, 23 new product compositions, W2 COA checklist and responsive W1 catalog.

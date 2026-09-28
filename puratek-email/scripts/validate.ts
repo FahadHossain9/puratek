@@ -11,7 +11,7 @@ export function validate(root='dist',release=false){
  const fail=(test:boolean,message:string)=>{if(!test)errors.push(message)};
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
  fail(manifest.length===24,'Expected 23 roles plus one W2 alternative');fail(new Set(manifest.map((e:any)=>e.id)).size===manifest.length,'Duplicate template ID');
- const artworks=manifest.map((e:any)=>e.art?.file);fail(artworks.every((file:any)=>/^automation-r[56]\//.test(file||'')),'Every email needs registered campaign artwork');fail(new Set(artworks).size===23,'Artwork must be unique per email');
+ const artworks=manifest.map((e:any)=>e.art?.file);fail(artworks.every((file:any)=>/^automation-r8\//.test(file||'')),'Every email needs registered campaign artwork');fail(new Set(artworks).size===23,'Artwork must be unique per email');
  for(const e of manifest){
   if(e.id!=='w1')fail(!JSON.stringify(e.sections).includes('PUR-3R'),`${e.id}: PUR-3R outside client-requested W1`);
   const send=fs.readFileSync(path.join(root,'send',`${e.id}.html`),'utf8');
@@ -45,7 +45,7 @@ export function validate(root='dist',release=false){
   if(release){fail(!/%%[A-Z_]+%%/.test(send),`${e.id}: unresolved deployment placeholders`);fail(e.sendReady===true,`${e.id}: production sign-off missing`);}
  }
  const luminance=(hex:string)=>{const [r,g,b]=hex.slice(1).match(/../g)!.map(h=>parseInt(h,16)/255).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4);return .2126*r+.7152*g+.0722*b;};
- for(const [label,fg,bg] of [['CTA',T.buttonText,T.button],['Body',T.body,T.white],['Muted',T.muted,T.page],['Link',T.orangeText,T.white],['Offer',T.muted,T.cream],['Hero',T.heading,T.orange],['Brand footer','#DDDDDD',T.navy]]){const a=luminance(fg),b=luminance(bg),ratio=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);fail(ratio>=4.5,`${label}: contrast ${ratio.toFixed(2)}`);}
+ for(const [label,fg,bg] of [['CTA',T.buttonText,T.button],['Body',T.body,T.white],['Muted',T.muted,T.page],['Link',T.orangeText,T.white],['Offer',T.muted,T.cream],['Hero',T.white,T.navy],['Hero eyebrow',T.orangeOnNavy,T.navy],['Brand footer','#DDDDDD',T.navy]]){const a=luminance(fg),b=luminance(bg),ratio=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);fail(ratio>=4.5,`${label}: contrast ${ratio.toFixed(2)}`);}
  fail(!fs.existsSync(path.join(root,'assets/generated')),'Rejected generated artwork copied into output');
  for(const e of manifest){const review=fs.readFileSync(path.join(root,'emails',e.id,'index.html'),'utf8');fail(!/<iframe\b/i.test(review),`${e.id}: iframe in review`);fail(review.includes('Download notes'),`${e.id}: missing review controls`);}
  fail(!fs.existsSync(path.join(root,'preview-dark')),'Separate dark preview must not be generated');
