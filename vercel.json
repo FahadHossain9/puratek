@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --prefix puratek-email",
+  "buildCommand": "npm run build --prefix puratek-email",
+  "outputDirectory": "puratek-email/dist",
+  "headers": [{"source":"/(.*)","headers":[{"key":"X-Robots-Tag","value":"noindex, nofollow"},{"key":"X-Content-Type-Options","value":"nosniff"}]}]
+}

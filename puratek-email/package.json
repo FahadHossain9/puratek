@@ -1,0 +1,38 @@
+{
+  "name": "puratek-email",
+  "version": "1.0.0",
+  "description": "Puratek Peptides email templates (React Email) \u2014 Welcome, Abandoned cart, Broadcasts",
+  "scripts": {
+    "build": "node --import tsx src/build.tsx",
+    "serve": "node --import tsx scripts/serve.ts",
+    "dev": "node --import tsx scripts/dev.ts",
+    "validate": "node --import tsx scripts/validate.ts",
+    "validate:release": "node --import tsx scripts/validate.ts --release",
+    "qa:flows": "node --import tsx scripts/test-flows.ts",
+    "qa:render": "node --import tsx scripts/render-qa.ts",
+    "package": "node --import tsx scripts/package-handoff.ts",
+    "check": "npm run build && npm run validate && npm run qa:flows",
+    "funnelkit:export": "node --import tsx scripts/funnelkit-export.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.1.0",
+    "@types/react": "^19.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "marked": "15.0.12"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module"
+}

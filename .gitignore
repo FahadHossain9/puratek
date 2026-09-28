@@ -1,0 +1,26 @@
+.DS_Store
+*.zip
+inputs/
+audit/
+site-snapshots/
+puratek-email/node_modules/
+puratek-email/baseline/
+puratek-email/revisions/
+puratek-email/dist.previous/
+puratek-email/.dist-next/
+puratek-email/handoff/
+puratek-email/qa/screenshots/
+puratek-email/assets/generated/
+puratek-email/config/*.local.json
+puratek-email/funnelkit-export/
+# Rebuilt locally and during deployment
+puratek-email/dist/
+puratek-email/qa/
+# Supplied reference material remains local
+/*.pdf
+/*.png
+puratek-email/assets/editorial/
+puratek-email/assets/client/
+.env
+.env.*
+!.env.example

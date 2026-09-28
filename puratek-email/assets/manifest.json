@@ -1,0 +1,394 @@
+[
+  {
+    "id": "r5-w1",
+    "file": "automation-r5/w1.jpg",
+    "master": "automation-r5/w1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "w1"
+    ],
+    "alt": "Orange and white illustration for a welcome from our team.",
+    "bytes": 54866,
+    "sha256": "81b5445c986927d5eab03a54ed93da57008531304187a0c92d075c63daf9ff48",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-w2",
+    "file": "automation-r5/w2.jpg",
+    "master": "automation-r5/w2-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "w2",
+      "w2-alt"
+    ],
+    "alt": "Orange and white illustration for the documentation.",
+    "bytes": 69741,
+    "sha256": "a4a234f51f70c87bb4044ec940d7269e631e584fb026d74818eac64139327d1e",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r6-w3",
+    "file": "automation-r6/w3.jpg",
+    "master": "automation-r6/w3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "w3"
+    ],
+    "alt": "Three illustrated cards representing specifications, documentation and traceability.",
+    "bytes": 60348,
+    "sha256": "10b4284a5bf1b997ae8e2393649a893ffa19e0d5920e96047769b10f85764a84",
+    "source": "Built-in image generation; exact prompt in automation-r6/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-w4",
+    "file": "automation-r5/w4.jpg",
+    "master": "automation-r5/w4-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "w4"
+    ],
+    "alt": "Orange and white illustration for your first-order code.",
+    "bytes": 45158,
+    "sha256": "efa61b7a42c88672936d18f9846f30b44bd81b9de7153612502fd8f73a9400f3",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-c1",
+    "file": "automation-r5/c1.jpg",
+    "master": "automation-r5/c1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "c1"
+    ],
+    "alt": "Orange and white illustration for your saved cart.",
+    "bytes": 49113,
+    "sha256": "dad49dbd969194ef728a0a03be8ce52238ec4387ceb71e1d7c17839d69e13bbb",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-c2a",
+    "file": "automation-r5/c2a.jpg",
+    "master": "automation-r5/c2a-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "c2a"
+    ],
+    "alt": "Orange and white illustration for your first order.",
+    "bytes": 48735,
+    "sha256": "b6b29ad874cc842b62d58bc2cbcd89a32129f5b957c36442630063daf0ef56a9",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-c2b",
+    "file": "automation-r5/c2b.jpg",
+    "master": "automation-r5/c2b-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "c2b"
+    ],
+    "alt": "Orange and white illustration for welcome back.",
+    "bytes": 57803,
+    "sha256": "0fd000fbcfc9588526ae204d984b612cb565f88cd284e153d7a4cb9b1b9ece6c",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-c3",
+    "file": "automation-r5/c3.jpg",
+    "master": "automation-r5/c3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "c3"
+    ],
+    "alt": "Orange and white illustration for before you decide.",
+    "bytes": 44550,
+    "sha256": "42757828e6e737392982f8a582645a0179b67a7b5ca5ea30140d787e79e1191d",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-c4",
+    "file": "automation-r5/c4.jpg",
+    "master": "automation-r5/c4-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "c4"
+    ],
+    "alt": "Orange and white illustration for a note from our team.",
+    "bytes": 43247,
+    "sha256": "4f18ea68d5f530742e2622d82a85fe2f6b3ca122d68c2eef6a642ef0dd20b478",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-b1",
+    "file": "automation-r5/b1.jpg",
+    "master": "automation-r5/b1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "b1"
+    ],
+    "alt": "Orange and white illustration for the puratek journal.",
+    "bytes": 44886,
+    "sha256": "2b8fe61a912838531b6c35fc362d9426fb123834ff166c97a5afbb0fb63dd669",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-b2",
+    "file": "automation-r5/b2.jpg",
+    "master": "automation-r5/b2-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "b2"
+    ],
+    "alt": "Orange and white illustration for behind your order.",
+    "bytes": 60206,
+    "sha256": "e80ccab7dab76800f7d8a28c26f8268cf70cebab90cb6fcd8b68ee28c744b8b9",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-b3",
+    "file": "automation-r5/b3.jpg",
+    "master": "automation-r5/b3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "b3"
+    ],
+    "alt": "Orange and white illustration for a puratek offer.",
+    "bytes": 51348,
+    "sha256": "300f7cdfd8b90066b051d2292a7e574465dc1927de3589153d1980d3a1006bdc",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-p1",
+    "file": "automation-r5/p1.jpg",
+    "master": "automation-r5/p1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "p1"
+    ],
+    "alt": "Orange and white illustration for order support.",
+    "bytes": 50732,
+    "sha256": "e10494deb2588531575dc366e90f4e9c76c3f44649b2afa2e49fa89bdf729c77",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-p2",
+    "file": "automation-r5/p2.jpg",
+    "master": "automation-r5/p2-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "p2"
+    ],
+    "alt": "Orange and white illustration for your batch documents.",
+    "bytes": 50128,
+    "sha256": "e683519c9e1d9c776eb0ea8bcb6fa6e1b2da3854b96fa7d70ee0948a456384e9",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-p3",
+    "file": "automation-r5/p3.jpg",
+    "master": "automation-r5/p3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "p3"
+    ],
+    "alt": "Orange and white illustration for your ordering experience.",
+    "bytes": 48298,
+    "sha256": "e9e23fd2ecef57608db304309d6f86e81ad5eb5f75f28f076bb4201327c8caa8",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-p4",
+    "file": "automation-r5/p4.jpg",
+    "master": "automation-r5/p4-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "p4"
+    ],
+    "alt": "Orange and white illustration for documentation support.",
+    "bytes": 46566,
+    "sha256": "0fe11e617c3a153bb2209a67365a987f16a35f36b83f20120056208c8742e798",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-r1",
+    "file": "automation-r5/r1.jpg",
+    "master": "automation-r5/r1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "r1"
+    ],
+    "alt": "Orange and white illustration for before your next order.",
+    "bytes": 56539,
+    "sha256": "ea4779e784c9ea31136c72b2d0aa51262f524c0dcad67e86f2022c2d12dc2c47",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-r2",
+    "file": "automation-r5/r2.jpg",
+    "master": "automation-r5/r2-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "r2"
+    ],
+    "alt": "Orange and white illustration for explore puratek.",
+    "bytes": 46227,
+    "sha256": "77e82247a93826b6dec868e2a93e3367f049b7c2664b7f4b6b7bb2592011ab93",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-r3",
+    "file": "automation-r5/r3.jpg",
+    "master": "automation-r5/r3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "r3"
+    ],
+    "alt": "Orange and white illustration for when you are ready.",
+    "bytes": 48386,
+    "sha256": "bfaaf58f0afe231c6de725d67d41385f64a35e5e5cd58b3a8dd411a546c5a66b",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-x1",
+    "file": "automation-r5/x1.jpg",
+    "master": "automation-r5/x1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "x1"
+    ],
+    "alt": "Orange and white illustration for a note from puratek.",
+    "bytes": 49512,
+    "sha256": "c2bf817a4470c9e08b6884935fac07cf174a43f4d54acb414593d982c3309f02",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-x2",
+    "file": "automation-r5/x2.jpg",
+    "master": "automation-r5/x2-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "x2"
+    ],
+    "alt": "Orange and white illustration for your questions are welcome.",
+    "bytes": 55454,
+    "sha256": "8e191fd36e45143e5627be34ed67898f004000ba72127cd13181328d268837ce",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-x3",
+    "file": "automation-r5/x3.jpg",
+    "master": "automation-r5/x3-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "x3"
+    ],
+    "alt": "Orange and white illustration for your preferences.",
+    "bytes": 43666,
+    "sha256": "c7345aeb08b7ffc9afd9b962412f8231f5b704455dbcb7a13fc6f364800da461",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  },
+  {
+    "id": "r5-h1",
+    "file": "automation-r5/h1.jpg",
+    "master": "automation-r5/h1-master.png",
+    "kind": "illustration",
+    "width": 1000,
+    "height": 666,
+    "usedIn": [
+      "h1"
+    ],
+    "alt": "Orange and white illustration for personal order support.",
+    "bytes": 44457,
+    "sha256": "02405d7535719fb881104481c82c70db6c3b39943fc14e03727ed1e63f3d939b",
+    "source": "Built-in image generation; exact prompt in automation-r5/prompts.json",
+    "provenance": "AI-generated editorial metaphor; no product, scientific data or customer record depicted",
+    "releaseRequires": "Client artwork review"
+  }
+]

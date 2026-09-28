@@ -1,0 +1,12 @@
+node_modules/
+.dist-next/
+dist.previous/
+.DS_Store
+baseline/
+revisions/
+handoff/
+qa/screenshots/
+assets/generated/
+config/*.local.json
+funnelkit-export/
+funnelkit-export.next/

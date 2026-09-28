@@ -1,0 +1,61 @@
+{
+  "templateIds": [
+    "w1",
+    "w2",
+    "w3",
+    "c1",
+    "c2a",
+    "c2b",
+    "c3"
+  ],
+  "confirmed": {
+    "copyAndAssetsReviewed": false,
+    "installedTagsVerified": false,
+    "imageUrlsVerified": false
+  },
+  "placeholderMap": {
+    "{{business_address}}": "",
+    "{{unsubscribe_link}}": "",
+    "%%PRIVACY_URL%%": "",
+    "%%PREFERENCES_URL%%": "",
+    "%%COUPON_CODE%%": "",
+    "%%COUPON_EXPIRY%%": "",
+    "%%CART_LINK%%": "",
+    "%%CART_ITEMS%%": "",
+    "%%CART_COUPON_CODE%%": "",
+    "%%CART_COUPON_EXPIRY%%": "",
+    "%%SALE_CODE%%": "",
+    "%%SALE_END_DATE%%": ""
+  },
+  "assetUrls": {
+    "puratek-logo-dark@2x.png": "",
+    "puratek-logo-light@2x.png": "",
+    "automation-r5/w1.jpg": "",
+    "automation-r5/w2.jpg": "",
+    "automation-r6/w3.jpg": "",
+    "automation-r5/w4.jpg": "",
+    "automation-r5/c1.jpg": "",
+    "automation-r5/c2a.jpg": "",
+    "automation-r5/c2b.jpg": "",
+    "automation-r5/c3.jpg": "",
+    "automation-r5/c4.jpg": "",
+    "automation-r5/b1.jpg": "",
+    "automation-r5/b2.jpg": "",
+    "automation-r5/b3.jpg": "",
+    "automation-r5/p1.jpg": "",
+    "automation-r5/p2.jpg": "",
+    "automation-r5/p3.jpg": "",
+    "automation-r5/p4.jpg": "",
+    "automation-r5/r1.jpg": "",
+    "automation-r5/r2.jpg": "",
+    "automation-r5/r3.jpg": "",
+    "automation-r5/x1.jpg": "",
+    "automation-r5/x2.jpg": "",
+    "automation-r5/x3.jpg": "",
+    "automation-r5/h1.jpg": "",
+    "products-r6/bpc-157-email.jpg": "",
+    "products-r6/ghk-cu-email.jpg": "",
+    "products-r6/pur-3r-email.jpg": "",
+    "products-r6/mots-c-email.jpg": ""
+  }
+}

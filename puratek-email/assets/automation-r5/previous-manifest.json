@@ -1,0 +1,51 @@
+[
+  {
+    "id": "client-ghk-cu",
+    "file": "client/ghk-cu-100mg.jpg",
+    "alt": "Client-supplied GHK-Cu vial artwork labeled 100 mg.",
+    "usedIn": [],
+    "caption": "GHK-Cu \u00b7 100 mg",
+    "width": 520,
+    "height": 599,
+    "bytes": 30290,
+    "source": "Puratek peptide-20260928T092318Z-1-001.zip / Puratek peptide/Puratek Product Images/image-11.jpg",
+    "provenance": "Client-supplied artwork; resized and JPEG optimized only. No relabeling or generative edits.",
+    "sha256": "2ab5be1ac75338ce41631858fc8a586961dfa0c3fde97ef72abec7b228ce4d36",
+    "releaseRequires": "Verify current catalog label, size and batch documentation; no claim of regulatory approval."
+  },
+  {
+    "id": "ghk-cu-studio",
+    "file": "editorial/ghk-cu-studio.jpg",
+    "kind": "product",
+    "width": 1200,
+    "height": 800,
+    "usedIn": [
+      "w1"
+    ],
+    "alt": "Studio composition based on supplied GHK-Cu artwork, labeled 100 mg.",
+    "bytes": 117286,
+    "sha256": "6344bff2d32e483bf94262d93d6f49de5ced1944dddcad6633cf260035850b11",
+    "source": "Built-in image generation; see editorial/PROMPTS.md",
+    "master": "editorial/ghk-cu-studio-master.png",
+    "provenance": "AI-generated studio composite from supplied product reference",
+    "releaseRequires": "Client artwork review; verify product SKU, size, label and COA before sending"
+  },
+  {
+    "id": "amber-structure",
+    "file": "editorial/amber-structure.jpg",
+    "kind": "abstract",
+    "width": 1200,
+    "height": 800,
+    "usedIn": [
+      "b3",
+      "r2"
+    ],
+    "alt": "Abstract amber glass sculpture on an ivory podium.",
+    "bytes": 135428,
+    "sha256": "bc3aba0cd7fea9f2ec7b05e98285af8a8b5701c96a65ac88b333a0832aa3c8af",
+    "source": "Built-in image generation; see editorial/PROMPTS.md",
+    "master": "editorial/amber-structure-master.png",
+    "provenance": "AI-generated abstract brand artwork; not scientific evidence",
+    "releaseRequires": "Client artwork review"
+  }
+]
