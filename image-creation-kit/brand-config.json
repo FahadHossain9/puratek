@@ -1,0 +1,32 @@
+{
+  "mode": "same-brand",
+  "brand_name": "Puratek",
+  "background_hex": "#13172A",
+  "accent_hex": "#F7931E",
+  "neutral_hex": "#FFFFFF",
+  "style": "photorealistic-product-still-life",
+  "aspect_ratio": "3:2",
+  "export_width": 1200,
+  "export_height": 800,
+  "product_references": [
+    "references/puratek-bpc-157.jpg",
+    "references/puratek-ghk-cu.jpg"
+  ],
+  "logo_references": [
+    "references/puratek-logo-dark.png",
+    "references/puratek-logo-light.png"
+  ],
+  "style_reference": "references/puratek-style-w1.jpg",
+  "products": [
+    {
+      "name": "BPC-157",
+      "quantity_label": "10 MG"
+    },
+    {
+      "name": "GHK-Cu",
+      "quantity_label": "100 MG"
+    }
+  ],
+  "preserve_real_packaging": true,
+  "campaign_text_in_image": false
+}
