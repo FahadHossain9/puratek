@@ -33,7 +33,65 @@ verify(PFI_Builder::package($package) === $package, 'Conversion must be idempote
 $sidebar = ['pfi_editor_variant'=>'c2a', 'bwfan_email_data'=>['subject'=>'edited'], 'pfi_variants'=>['c2a'=>['subject'=>'old'], 'c2b'=>['subject'=>'other']]];
 verify(PFI_Builder::selected($sidebar, 'c2a')['subject'] === 'edited', 'Saved editor content ignored');
 verify(PFI_Builder::selected($sidebar, 'c2b')['subject'] === 'other', 'Other variant overwritten');
-foreach (['<script>alert(1)</script>', '<img src="x" onerror="alert(1)">', '<a href="vbscript:x">x</a>'] as $html) {
+$sampleEmail = null;
+foreach ($package['flows']['welcome']['payload']['step_data'] as $step) {
+    $data = PFI_Package::json($step['data']);
+    if (isset($data['sidebarData']['bwfan_email_data'])) { $sampleEmail = $data['sidebarData']['bwfan_email_data']; break; }
+}
+verify(is_array($sampleEmail), 'Missing sample email');
+foreach (["bad\r\nBcc: someone@example.invalid", "bad\0subject"] as $subject) {
+    $badEmail = $sampleEmail; $badEmail['subject'] = $subject; $rejected = false;
+    try { PFI_Builder::email($badEmail); } catch (RuntimeException $e) { $rejected = true; }
+    verify($rejected, 'Unsafe subject accepted');
+}
+$badEmail = $sampleEmail;
+$badEmail['data']['block']['body'] = '<!-- wp:email-block/row {} --><!-- wp:email-block/section {} --><!-- wp:email-block/column {} --><!-- wp:email-block/text {"content":"<img src=x onerror=alert(1)>"} /--><!-- /wp:email-block/column --><!-- /wp:email-block/section --><!-- /wp:email-block/row -->';
+$rejected = false;
+try { PFI_Builder::email($badEmail); } catch (RuntimeException $e) { $rejected = true; }
+verify($rejected, 'Unsafe builder attributes accepted');
+foreach (['<!-- wp:email-block/row {} -->', '<!-- wp:email-block/text {bad json} /-->'] as $body) {
+    $rejected = false;
+    try { PFI_Builder::document($body); } catch (Throwable $e) { $rejected = true; }
+    verify($rejected, 'Broken builder document accepted');
+}
+$mappedPackage = $package;
+foreach ($mappedPackage['flows']['welcome']['payload']['step_data'] as &$step) {
+    $data = PFI_Package::json($step['data']);
+    if (!isset($data['sidebarData']['pfi_variants'])) { continue; }
+    foreach ($data['sidebarData']['pfi_variants'] as &$email) {
+        $email['template'] = str_replace('</body>', '<p>[[PFI:label]]</p></body>', $email['template']);
+        $email['data']['block']['template'] = $email['template'];
+        $email['data']['block']['body'] = str_replace('wp:email-block/text {', 'wp:email-block/text {"pfi_test_label":"[[PFI:label]]",', $email['data']['block']['body']);
+    } unset($email);
+    $key = $data['sidebarData']['pfi_editor_variant'];
+    $data['sidebarData']['bwfan_email_data'] = $data['sidebarData']['pfi_variants'][$key];
+    $step['data'] = wp_json_encode($data);
+} unset($step);
+$mappedPackage = PFI_Package::mappings($mappedPackage, ['label'=>'C:\\Puratek\\draft & review']);
+foreach ($mappedPackage['flows']['welcome']['payload']['step_data'] as $step) {
+    $data = PFI_Package::json($step['data']);
+    foreach ($data['sidebarData']['pfi_variants'] ?? [] as $email) {
+        preg_match('/<!-- wp:email-block\/text (\{.*?\}) \/-->/s', $email['data']['block']['body'], $match);
+        verify(PFI_Package::json($match[1])['pfi_test_label'] === 'C:\\Puratek\\draft &amp; review', 'Mapping changed backslashes or HTML escaping');
+    }
+}
+$edited = $package;
+foreach ($edited['flows']['cart']['payload']['step_data'] as &$step) {
+    $data = PFI_Package::json($step['data']);
+    if (($data['sidebarData']['pfi_step'] ?? '') !== 'c2') { continue; }
+    $data['sidebarData']['pfi_editor_variant'] = 'c2b';
+    $data['sidebarData']['bwfan_email_data'] = $data['sidebarData']['pfi_variants']['c2b'];
+    $data['sidebarData']['bwfan_email_data']['subject'] = 'Saved returning customer subject';
+    $step['data'] = wp_json_encode($data);
+} unset($step);
+$edited = PFI_Builder::package($edited);
+foreach ($edited['flows']['cart']['payload']['step_data'] as $step) {
+    $data = PFI_Package::json($step['data']);
+    if (($data['sidebarData']['pfi_step'] ?? '') === 'c2') {
+        verify($data['sidebarData']['pfi_editor_variant'] === 'c2b' && $data['sidebarData']['pfi_variants']['c2b']['subject'] === 'Saved returning customer subject', 'Conversion discarded saved editor variant');
+    }
+}
+foreach (['<script>alert(1)</script>', '<img src="x" onerror="alert(1)">', '<a href="vbscript:x">x</a>', '<a href="java&#x73;cript:alert(1)">x</a>', '<a href="java&#10;script:alert(1)">x</a>'] as $html) {
     $rejected = false;
     try { PFI_Builder::html($html); } catch (RuntimeException $e) { $rejected = true; }
     verify($rejected, 'Active content accepted');
@@ -48,4 +106,4 @@ if (class_exists('ZipArchive')) {
         verify(PFI_Package::read($path) === $package, 'ZIP parser changed payload');
     } finally { if (file_exists($path)) { unlink($path); } }
 } else { throw new RuntimeException('ZipArchive is required to test the import package'); }
-echo "PASS: 7 flows, 21 variants, preserved HTML, block JSON, variant isolation, unsafe HTML rejection, conversion idempotence and ZIP readback.\n";
+echo "PASS: 7 flows, 21 variants, preserved HTML, block structure/attributes, variant isolation, saved editor retention, encoded URL/header rejection, JSON-safe mappings, conversion idempotence and ZIP readback.\n";
