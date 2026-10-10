@@ -2,6 +2,11 @@
 
 Mobile-first email review site, FunnelKit HTML drafts and Figma import library.
 
+WordPress automation source is in `wordpress/puratek-flow-importer/`.
+The seven-flow local builder package, tests and ZIP build instructions are
+documented in [WordPress automation handoff](docs/21-WordPress-Automation-Handoff.md).
+This plugin is a local prototype; production integration and licensed builder validation remain outstanding.
+
 The application is in `puratek-email/`. Use Node 22 or newer:
 
 ```sh

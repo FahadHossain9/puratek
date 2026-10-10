@@ -1,0 +1,41 @@
+{
+  "package_id": "puratek-builder-local",
+  "schema": 1,
+  "flows": [
+    {
+      "file": "welcome.json",
+      "id": "welcome",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "cart.json",
+      "id": "cart",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "support.json",
+      "id": "support",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "post-purchase.json",
+      "id": "post-purchase",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "repeat.json",
+      "id": "repeat",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "winback.json",
+      "id": "winback",
+      "version": "2.0.0-builder"
+    },
+    {
+      "file": "broadcast.json",
+      "id": "broadcast",
+      "version": "2.0.0-builder"
+    }
+  ]
+}

@@ -24,3 +24,10 @@ puratek-email/assets/client/
 .env
 .env.*
 !.env.example
+
+# WordPress runtime and generated release artifacts
+releases/
+wp-config.php
+*.sql
+*.sql.gz
+debug.log
