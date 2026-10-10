@@ -61,3 +61,29 @@ This is a local prototype, not a deployable live automation release.
 
 Test a production adapter on licensed staging before deploying it. Pushing
 this code to GitHub does not install the plugin or modify the live store.
+
+## Review fixes
+
+Builder mappings now decode block attributes before substitution and encode
+them again afterward, preserving JSON when values contain backslashes.
+Re-conversion retains the selected editor variant and saved content. Import
+validation checks block types, nesting, JSON and attribute content, rejects
+subject header separators and encoded unsafe URLs, and validates workflows
+again after mappings. Regression tests cover these cases.
+
+## Using the current local site
+
+The original seven builder drafts are already imported (IDs 213–219).
+Installing the reviewed plugin update does not require importing again.
+If you change a draft manually, the importer refuses to overwrite or roll
+back that edited draft. Keep a backup before editing.
+
+The local site must have `WP_ENVIRONMENT_TYPE` set to `local` and host
+`email-test-puratek.local`. Otherwise the local package is rejected.
+The local blocked-mail test guard is installed separately on the existing
+site; it is not bundled with this plugin. Installing just the plugin does
+not install the full test lab or mail/HTTP guard.
+
+To review: open the PR's Files changed tab, then inspect local inactive
+flows under FunnelKit Automations → Automations. The unlicensed editor can
+block Edit/Save. Do not activate drafts as a substitute for verification.
