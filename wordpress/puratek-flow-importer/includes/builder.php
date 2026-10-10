@@ -10,18 +10,60 @@ final class PFI_Builder {
     public static function html(string $html): void {
         PFI_Package::check(strlen($html) > 0 && strlen($html) <= 104448, 'Email HTML must contain 1–102 KB.');
         PFI_Package::check(!preg_match('~<\s*(script|iframe|object|embed|form)\b|\bon[a-z]+\s*=|(?:javascript|vbscript)\s*:|data\s*:\s*text/html~i', $html), 'Unsafe active email content.');
+        $decoded = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $normalized = preg_replace('/[\x00-\x20\x7f]+/', '', $decoded);
+        PFI_Package::check(!preg_match('~(?:javascript|vbscript):|data:text/html~i', $normalized), 'Unsafe encoded email URL.');
     }
 
     public static function email(array $email): void {
         PFI_Package::check(is_string($email['subject'] ?? null) && trim($email['subject']) !== '' && strlen($email['subject']) <= 998, 'Email subject is missing or too long.');
+        PFI_Package::check(!preg_match('/[\r\n\x00]/', $email['subject']), 'Email subject cannot contain header separators.');
         PFI_Package::check(in_array($email['mode'] ?? null, [1,3,4,5], true) && is_array($email['data'] ?? null) && is_string($email['template'] ?? null), 'Invalid native email format.');
         self::html($email['template']);
         if (($email['mode'] ?? 0) === 5) {
             $block = $email['data']['block'] ?? null;
             PFI_Package::check(is_array($block) && is_string($block['body'] ?? null) && strlen($block['body']) <= 524288 && is_array($block['settings'] ?? null) && is_string($block['template'] ?? null), 'Visual Builder email requires body, settings and rendered template.');
             PFI_Package::check(str_contains($block['body'], '<!-- wp:email-block/'), 'Missing native editable email blocks.');
+            self::document($block['body']);
             self::html($block['template']);
             PFI_Package::check($block['template'] === $email['template'], 'Builder rendered template and email template differ. Save/export the email again.');
+        }
+    }
+
+    /** Parse block attributes before mapping; inserting raw text into serialized JSON corrupts it. */
+    public static function document(string $body, ?callable $map = null): string {
+        $stack = []; $offset = 0; $output = '';
+        preg_match_all('~<!--\s*(/?)wp:email-block/([a-z-]+)(.*?)-->~s', $body, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+        foreach ($matches as $match) {
+            PFI_Package::check(trim(substr($body, $offset, $match[0][1] - $offset)) === '', 'Unexpected content outside builder blocks.');
+            $closing = $match[1][0] === '/'; $type = $match[2][0]; $tail = trim($match[3][0]);
+            PFI_Package::check(in_array($type, ['row','section','column','text','image','cart-items','cart-link','coupon'], true), 'Unsupported builder block: ' . $type);
+            if ($closing) {
+                PFI_Package::check($tail === '' && array_pop($stack) === $type, 'Unbalanced builder blocks.');
+                $output .= '<!-- /wp:email-block/' . $type . ' -->' . "\n";
+            } else {
+                $selfClosing = str_ends_with($tail, '/');
+                $attrs = PFI_Package::json($selfClosing ? rtrim(substr($tail, 0, -1)) : $tail);
+                $parent = $stack ? end($stack) : null;
+                $expected = ['row'=>null, 'section'=>'row', 'column'=>'section'];
+                PFI_Package::check($parent === ($expected[$type] ?? ($type === 'row' ? null : 'column')), 'Invalid builder nesting.');
+                PFI_Package::check($selfClosing === !in_array($type, ['row','section','column'], true), 'Invalid builder block closing format.');
+                if ($map) { $attrs = $map($attrs); }
+                self::attributes($attrs);
+                $json = str_replace(['--','<','>','&'], ['\\u002d\\u002d','\\u003c','\\u003e','\\u0026'], wp_json_encode($attrs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+                $output .= '<!-- wp:email-block/' . $type . ' ' . $json . ($selfClosing ? ' /-->' : ' -->') . "\n";
+                if (!$selfClosing) { $stack[] = $type; }
+            }
+            $offset = $match[0][1] + strlen($match[0][0]);
+        }
+        PFI_Package::check($offset > 0 && !$stack && trim(substr($body, $offset)) === '', 'Incomplete builder document.');
+        return $output;
+    }
+
+    private static function attributes(array $attrs): void {
+        foreach ($attrs as $value) {
+            if (is_array($value)) { self::attributes($value); }
+            elseif (is_string($value) && $value !== '') { self::html($value); }
         }
     }
 
@@ -140,8 +182,12 @@ final class PFI_Builder {
             foreach($flow['payload']['step_data'] as &$step) {
                 $d=PFI_Package::json($step['data']);
                 if(empty($d['sidebarData']['pfi_variants'])) { continue; }
+                $key = $d['sidebarData']['pfi_editor_variant'] ?? array_key_first($d['sidebarData']['pfi_variants']);
+                PFI_Package::check(is_string($key) && isset($d['sidebarData']['pfi_variants'][$key]), 'Unknown editor variant.');
+                if (isset($d['sidebarData']['pfi_editor_variant']) && is_array($d['sidebarData']['bwfan_email_data'] ?? null)) {
+                    $d['sidebarData']['pfi_variants'][$key] = $d['sidebarData']['bwfan_email_data'];
+                }
                 foreach($d['sidebarData']['pfi_variants'] as &$email) { $email=self::convert($email); } unset($email);
-                $key=array_key_first($d['sidebarData']['pfi_variants']);
                 $d['sidebarData']['pfi_editor_variant']=$key;
                 $d['sidebarData']['bwfan_email_data']=$d['sidebarData']['pfi_variants'][$key];
                 $step['data']=wp_json_encode($d);

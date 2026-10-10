@@ -190,10 +190,27 @@ final class PFI_Package {
         foreach ($package['flows'] as &$f) {
             // Parse nested JSON before substitution, preventing quote/backslash corruption.
             foreach ($f['payload']['step_data'] as &$step) {
-                $step['data'] = wp_json_encode($replace(self::json($step['data'])));
+                $data = self::json($step['data']);
+                $mapEmail = static function ($email) use ($replace) {
+                    if (($email['mode'] ?? null) === 5 && isset($email['data']['block']['body'])) {
+                        $body = PFI_Builder::document($email['data']['block']['body'], $replace);
+                        unset($email['data']['block']['body']);
+                        $email = $replace($email);
+                        $email['data']['block']['body'] = $body;
+                        return $email;
+                    }
+                    return $replace($email);
+                };
+                $emails = [];
+                if (isset($data['sidebarData']['bwfan_email_data'])) { $emails['bwfan_email_data'] = $mapEmail($data['sidebarData']['bwfan_email_data']); unset($data['sidebarData']['bwfan_email_data']); }
+                if (isset($data['sidebarData']['pfi_variants'])) { $emails['pfi_variants'] = array_map($mapEmail, $data['sidebarData']['pfi_variants']); unset($data['sidebarData']['pfi_variants']); }
+                $data = $replace($data);
+                foreach ($emails as $field=>$value) { $data['sidebarData'][$field] = $value; }
+                $step['data'] = wp_json_encode($data);
             } unset($step);
             $f['payload']['meta'] = $replace($f['payload']['meta']);
             self::check(!preg_match('/\[\[PFI:|%%[A-Z0-9_]+%%/', wp_json_encode($f['payload'])), 'Unresolved template placeholders.');
+            self::validate_workflow($f['payload']);
         } unset($f);
         return $package;
     }
